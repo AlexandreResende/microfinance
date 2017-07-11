@@ -5581,8 +5581,8 @@ button.btn-floating {
   right: 0;
   background-color: #fafafa;
   padding: 0;
-  max-height: 70%;
-  width: 55%;
+  max-height: 100%;
+  width: 32%;
   margin: auto;
   overflow-y: auto;
   border-radius: 2px;
@@ -5600,7 +5600,7 @@ button.btn-floating {
 }
 
 .modal .modal-content {
-  padding: 24px;
+  padding: 0px;
 }
 
 .modal .modal-close {
@@ -5617,7 +5617,7 @@ button.btn-floating {
 }
 
 .modal .modal-footer .btn, .modal .modal-footer .btn-large, .modal .modal-footer .btn-flat {
-  margin: 6px 0;
+  margin: 4px 0;
 }
 
 .modal-overlay {
@@ -5796,8 +5796,8 @@ button.btn-floating {
 }
 
 .chips.focus {
-  border-bottom: 1px solid #26a69a;
-  box-shadow: 0 1px 0 0 #26a69a;
+  border-bottom: 1px solid #023e68;
+  box-shadow: 0 1px 0 0 #023e68;
 }
 
 .chips:hover {
@@ -5805,7 +5805,7 @@ button.btn-floating {
 }
 
 .chips .chip.selected {
-  background-color: #26a69a;
+  background-color: #023e68;
   color: #fff;
 }
 
@@ -6023,8 +6023,8 @@ input[type=tel]:not(.browser-default):focus:not([readonly]),
 input[type=number]:not(.browser-default):focus:not([readonly]),
 input[type=search]:not(.browser-default):focus:not([readonly]),
 textarea.materialize-textarea:focus:not([readonly]) {
-  border-bottom: 1px solid #26a69a;
-  box-shadow: 0 1px 0 0 #26a69a;
+  border-bottom: 1px solid #023e68;
+  box-shadow: 0 1px 0 0 #023e68;
 }
 
 input:not([type]):focus:not([readonly]) + label,
@@ -6040,7 +6040,7 @@ input[type=tel]:not(.browser-default):focus:not([readonly]) + label,
 input[type=number]:not(.browser-default):focus:not([readonly]) + label,
 input[type=search]:not(.browser-default):focus:not([readonly]) + label,
 textarea.materialize-textarea:focus:not([readonly]) + label {
-  color: #26a69a;
+  color: #023e68;
 }
 
 input:not([type]).valid, input:not([type]):focus.valid,
