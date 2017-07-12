@@ -1,4 +1,5 @@
-# microfinance
+# Microfinance
 
-## edit swagger file:
+## Edit swagger documentation:
+
 ### swagger project edit microfinance
