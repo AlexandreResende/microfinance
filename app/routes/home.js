@@ -1,8 +1,9 @@
+const SimulationController = require('../controllers/simulation.controller');
+const express = require('express');
+const router = express.Router();
 
-module.exports = (app) => {
+router.get('/', SimulationController.home);
+router.get('/simulation', SimulationController.simulation);
+router.post('/calculate', SimulationController.calculate);
 
-	app.get('/', (req, resp) => {
-		resp.render('home/index');
-	});
-
-};
+module.exports = router;

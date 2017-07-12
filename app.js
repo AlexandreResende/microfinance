@@ -1,5 +1,4 @@
-
-var app = require('./config/server');
+const app = require('./config/server');
 const port = 3000;
 
 var server = app.listen(port, () => {
