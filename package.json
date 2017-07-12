@@ -20,9 +20,13 @@
   "homepage": "https://github.com/AlexandreResende/microfinance#readme",
   "dependencies": {
     "body-parser": "^1.17.2",
+    "chai": "^4.1.0",
+    "chai-http": "^3.0.0",
     "consign": "^0.1.4",
     "ejs": "^2.5.6",
     "express": "^4.15.3",
-    "express-validator": "^3.2.0"
+    "express-validator": "^3.2.0",
+    "mocha": "^3.4.2",
+    "swagger": "^0.7.5"
   }
 }
