@@ -1,6 +1,6 @@
 function UserDAO(connection) {
 
-    this._connection = connection;
+    this._connection = connection();
 
 }
 
