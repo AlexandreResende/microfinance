@@ -9,9 +9,9 @@ module.exports.signUp = (req, res) => {
     let errors;
     let user;
 
-    req.assert('','').notEmpty();
-    req.assert('', '').notEmpty();
-    req.assert('', '').notEmpty();
+    req.assert('username','Username can not be empty.').notEmpty();
+    req.assert('password', 'Password can not be empty.').notEmpty();
+    req.assert('email', 'E-mail can not be empty.').notEmpty();
 
     errors = req.validationErrors();
 
