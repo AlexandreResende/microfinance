@@ -1,15 +1,20 @@
-const mongoose = require('mongoose');
+//exporting database connection object
 
-let exportDatabaseConnection = () => {
+const MongoClient = require('mongodb').MongoClient;
 
-    let connection = mongoose.connect('mongodb://localhost:27017/microfinance', {useMongoClient: true});
+let _db;
 
-    return connection;
-}
+module.exports = {
 
+    connect: function(callback){
+        MongoClient.connect('mongodb://localhost:27017/microfinance', (err, db) => {
+            _db = db;
+            return callback(err);
+        });
+    },
 
+    getDb: function(){
+        return _db;
+    }
 
-module.exports = () => {
-    console.log('CONNECTION!!! ' + connection);
-    return exportDatabaseConnection;
 };
