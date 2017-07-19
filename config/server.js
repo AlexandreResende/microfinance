@@ -1,32 +1,25 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const expressValidator = require("express-validator");
-const consign = require("consign");
+//configuring the server
 
-const routes = require('../app/routes/home');
+const express = require('express');
+const expressValidator = require('express-validator');
+const bodyParser = require('body-parser');
+const helmet = require('helmet');
 
-//declaring the app object
+//importing all the routes of the project
+let userRoutes = require('../api/routes/user.routes');
+
 const app = express();
 
-//configuring ejs
 app.set('view engine', 'ejs');
-app.set('views', './app/views');
+app.set('views', './api/views');
 
-//configuring the middleware express.static
-app.use(express.static('./app/public'));
-//configuring the middleware bodyparser
-app.use(bodyParser.urlencoded({extended: true}));
-//configuring the middleware express validator
-app.use(expressValidator());
+//configuring the middlewares into the app
+app.use(bodyParser.urlencoded({ extended: true}))
+   .use(bodyParser.json())
+   .use(express.static('./api/public'))
+   .use(expressValidator())
+   .use(userRoutes)
+   .use(helmet());
 
-app.use(routes);
 
-/*
-//auto loading the routes of the controllers and models
-consign()
-	.include('app/routes')
-	.then('app/models')
-	.then('app/controllers')
-	.into(app);
-*/
 module.exports = app;

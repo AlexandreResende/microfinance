@@ -1,28 +1,32 @@
 {
   "name": "microfinance",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js",
-    "start2": "nodemon app.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/AlexandreResende/microfinance.git"
-  },
+  "version": "0.0.1",
+  "private": true,
+  "description": "New Swagger API Project",
+  "keywords": [],
   "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/AlexandreResende/microfinance/issues"
-  },
-  "homepage": "https://github.com/AlexandreResende/microfinance#readme",
+  "license": "",
+  "main": "app.js",
   "dependencies": {
     "body-parser": "^1.17.2",
-    "consign": "^0.1.4",
+    "chai": "^4.1.0",
+    "chai-http": "^3.0.0",
     "ejs": "^2.5.6",
-    "express": "^4.15.3",
-    "express-validator": "^3.2.0"
+    "express": "^4.12.3",
+    "express-validator": "^3.2.1",
+    "helmet": "^3.6.1",
+    "mocha": "^3.4.2",
+    "mongoose": "^4.11.3",
+    "swagger-express-mw": "^0.1.0"
+  },
+  "devDependencies": {
+    "should": "^7.1.0",
+    "supertest": "^1.0.0"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "start2": "nodemon app.js",
+    "test": "mocha --timeout 10000",
+    "test2": "swagger project test"
   }
 }
