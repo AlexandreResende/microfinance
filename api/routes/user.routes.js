@@ -1,4 +1,5 @@
 const express = require('express');
+const userController = require('../controllers/user.controller');
 
 let router = express.Router();
 
@@ -7,5 +8,7 @@ let router = express.Router();
 router.get('/', (req, res) => {
     res.render('index');
 });
+
+router.post('/signUp', userController.signUp);
 
 module.exports = router;
