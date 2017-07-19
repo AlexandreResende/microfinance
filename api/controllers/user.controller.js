@@ -1,5 +1,4 @@
-//user controller
-//importar db connection
+const dbConnection = require('../../config/database');
 const UserDAO = require('../model/UserDAO');
 
 module.exports.signUp = (req, res) => {
@@ -21,7 +20,7 @@ module.exports.signUp = (req, res) => {
     }
 
     //calling the model
-    //user = new UserDAO(dbConnection);
-    //user.signUp(req, res, username, password, email);
+    user = new UserDAO(dbConnection);
+    user.signUp(req, res, username, password, email);
 
 }
