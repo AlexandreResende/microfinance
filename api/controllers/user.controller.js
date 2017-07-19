@@ -20,7 +20,7 @@ module.exports.signUp = (req, res) => {
     }
 
     //calling the model
-    user = new UserDAO(dbConnection);
+    user = new UserDAO(dbConnection.getDb());
     user.signUp(req, res, username, password, email);
 
 }

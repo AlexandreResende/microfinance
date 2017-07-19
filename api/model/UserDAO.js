@@ -1,14 +1,19 @@
 function UserDAO(connection) {
 
-    this._connection = connection();
+    this._connection = connection;
 
 }
 
-UserDAO.prototype.signUp = (req, res, username, password, email) => {
+UserDAO.prototype.signUp = function(req, res, username, password, email) {
 
-    console.log('THIS CONNECTION: ' + this._connection);
+    let userData = {username, password, email}
 
-    res.send({msg: 'Signing up someone!!!'});
+    this._connection.collection('user').insert(userData, (err, result) => {
+            if (err){
+                return res.send({error: err});
+            }
+            return res.send({ok: 'ok'});
+    });
 
 }
 

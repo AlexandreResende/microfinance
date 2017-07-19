@@ -1,27 +1,31 @@
-'use strict';
-
 const SwaggerExpress = require('swagger-express-mw');
 const app = require('./config/server');
+const database = require('./config/database');
 
 var config = {
     appRoot: __dirname // required config
 };
 
-SwaggerExpress.create(config, function(err, swaggerExpress) {
+database.connect( (err) => {
 
-    if (err) { 
-        throw err; 
-    }
+    SwaggerExpress.create(config, function(err, swaggerExpress) {
 
-    // install middleware
-    swaggerExpress.register(app);
+        if (err) { 
+            throw err; 
+        }
 
-    var port = process.env.PORT || 10010;
+        // install middleware
+        swaggerExpress.register(app);
+
+        var port = process.env.PORT || 10010;
+        
+        app.listen(port, () => {
     
-    app.listen(port, () => {
-  
-        console.log(`Server is on being listened on port ${port}`);
+            console.log(`Server is on being listened on port ${port}`);
+
+        });
 
     });
 
 });
+
