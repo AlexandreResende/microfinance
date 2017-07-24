@@ -4,15 +4,27 @@ function UserDAO(connection) {
 
 }
 
-UserDAO.prototype.signUp = function(req, res, username, password, email) {
+UserDAO.prototype.signUp = function(req, res, userInfo) {
 
-    let userData = {username, password, email}
+    /*
+        VERIFICAR SE TANTO USUARIO E O EMAIL JA EXISTEM NO BANCO ANTES
+        DE FAZER A INSERCAO DO MESMO, PARA QUE DESSA MANEIRA NAO TENHANHOS
+        CONTAS COM O MESMO EMAIL E TBM DIFERENTES USUARIOS COM O MESMO LOGIN
+    */
 
-    this._connection.collection('user').insert(userData, (err, result) => {
+    this._connection.collection('user').insert(userInfo, (err, result) => {
+            
+            let username;
+            let id;
+            
             if (err){
                 return res.send({error: err});
             }
-            return res.send({ok: 'ok'});
+
+            username = userInfo.username;
+            id = result.ops[0]._id;
+
+            return res.send({ok: `User signed up successfully.`, username: username, id: id});
     });
 
 }
