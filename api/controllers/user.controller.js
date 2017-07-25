@@ -20,7 +20,12 @@ module.exports.signUp = (req, res) => {
 
     if (errors){
         //for to iterate through the errors
-        return res.render('index', {validation: errors, userData: {}});
+        return res.render('index', {
+                                    validation: errors, 
+                                    ok: "", 
+                                    error: "", 
+                                    userData: "",
+                                   });
     }
 
     //calling the model
