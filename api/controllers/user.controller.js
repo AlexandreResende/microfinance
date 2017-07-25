@@ -19,7 +19,8 @@ module.exports.signUp = (req, res) => {
     //errors = req.getValidationResult();
 
     if (errors){
-        return res.render('index', {validation: errors, username: userInfo.username, email: userInfo.email});
+        //for to iterate through the errors
+        return res.render('index', {validation: errors, userData: {}});
     }
 
     //calling the model
