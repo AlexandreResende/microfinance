@@ -6,20 +6,22 @@
 
 	<!-- CSS -->
 	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-	<link rel="stylesheet" type="text/css" href="./css/materialize.css" media="screen,projection">
-	<link rel="stylesheet" type="text/css" href="./css/style2.css" media="screen,projection">
+	<link rel="stylesheet" type="text/css" href="css/materialize.css" media="screen,projection">
+	<link rel="stylesheet" type="text/css" href="css/style.css" media="screen,projection">
 	<title>Micro Finance</title>
 </head>
 <body>
 	<nav class="blue-special" role="navigation">
-		<div class="nav-wrapper container">
+		<div class="nav-wrapper contai
+
+    ner">
 			<a id="logo-container" href="#" class="brand-logo">Micro Finance</a>
 			<ul class="right hide-on-med-and-down">
-				<li><a href="#">Entrar</a></li>
+				<li><a href="#modal1">Entrar</a></li>
 			</ul>
 
 			<ul id="nav-mobile" class="side-nav">
-				<li><a href="#">Entrar</a></li>
+				<li><a href="#modal1">Entrar</a></li>
 			</ul>
 			<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
 		</div>
@@ -33,11 +35,11 @@
 				<h5 class="header col s12 light">Gestão financeira fácil, com esforço micro.</h5>
 			</div>
 			<div class="row center">
-				<a href="/signUp" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Começar agora</a>
+				<a href="#modal1" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Começar agora</a>
 			</div>
 			<br><br>
 		</div>
-		<div class="parallax"><img src="./images/banner-index-2.jpg" alt="Unsplashed background img 1"></div>
+		<div class="parallax"><img src="images/banner-index-2.jpg" alt="Unsplashed background img 1"></div>
 	</div>
 
 	<div class="container">
@@ -79,7 +81,7 @@
         </div>
       </div>
     </div>
-    <div class="parallax"><img src="./images/banner-index-4.jpg" alt="Unsplashed background img 2"></div>
+    <div class="parallax"><img src="images/banner-index-4.jpg" alt="Unsplashed background img 2"></div>
   </div>
 
   <div class="container">
@@ -106,7 +108,7 @@
         </div>
       </div>
     </div>
-    <div class="parallax"><img src="./images/banner-index-5.jpg" alt="Unsplashed background img 3"></div>
+    <div class="parallax"><img src="images/banner-index-5.jpg" alt="Unsplashed background img 3"></div>
   </div>
 
   <footer class="page-footer teal">
@@ -133,9 +135,108 @@
       </div>
     </div>
   </footer>
-	<!--  Scripts-->
-	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-	<script src="./js/materialize.js"></script>
-	<script src="./js/init.js"></script>
+
+  <!-- Modal Trigger
+  <a class="waves-effect waves-light btn" href="#modal1">Modal</a> -->
+
+  <!-- Modal Structure -->
+  <!-- Modal 1 login -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+    	<div class="row right-align">
+    		<a href="#!" class="btn-flat modal-action modal-close waves-effect waves-default">X</a>
+    	</div>
+    	<div class="divider"></div>
+  		<div class="col m6 center-align">
+            <h5 class="center-align">Login</h5>
+            <div class="row">
+                <form class="col s12" action="/authenticate" method="POST">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="email" type="email" class="validate" name="username" value="<%=userData.username%>">
+                            <label for="email">Nome do usuário</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="pass" type="password" class="validate" name="password">
+                            <label for="pass">Senha</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12">
+                            <p>
+                                <input type="checkbox" id="remember">
+                                <label for="remember">Manter-me conectado</label>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="row">
+                    	<div class="col m6 center-align">
+                    		<p>Não tem uma conta?<br><a href="#modal2" class="modal-close">Crie agora</a></p>
+                    	</div>
+                        <div class="col m6 center-align">
+                            <p class="center">
+                                <button class="btn btn-large waves-effect waves-light teal lighten-1" type="submit" name="action">Entrar</button>
+                            </p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+	</div>          
+  </div>
+  <!-- modal 2 de cadastro-->
+  <div id="modal2" class="modal">
+  	<div class="modal-content">
+    	<div class="row right-align">
+    		<a href="#!" class="btn-flat modal-action modal-close waves-effect waves-default">X</a>
+    	</div>
+    	<div class="divider"></div>
+  		<div class="col m6 center-align">
+            <h5 class="center-align">Cadastro</h5>
+    		<div class="row">
+                <form class="col s12" action="/signup" method="POST">
+                	<div class="row">
+                		<div class="input-field col s12">
+                			<input id="name" type="text" class="validate" name="username">
+                			<label for="text">Nome de usuário</label>
+                		</div>
+                	</div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="pass" type="password" class="validate" name="password">
+                            <label for="pass">Senha</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="email" type="email" class="validate" name="email">
+                            <label>E-mail</label>
+                        </div>
+                    </div>
+                   <div class="divider"></div>
+                    <div class="row">
+                    	<div class="col m6 center-align">
+                    		<p>Já possui conta?<br><a href="#modal1" class="modal-close">Entre agora</a></p>
+                    	</div>
+                        <div class="col m6 center-align">
+                            <p class="right-align">
+                                <button class="btn btn-large waves-effect waves-light teal lighten-1" type="submit" name="action">Cadastrar</button>
+                            </p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+  </div>  
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+  <script src="js/modal.js"></script>
 </body>
 </html>
