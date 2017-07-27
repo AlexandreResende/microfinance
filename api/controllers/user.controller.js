@@ -16,6 +16,7 @@ module.exports.signUp = (req, res) => {
     req.assert('email', 'E-mail can not be empty.').notEmpty();
 
     errors = req.validationErrors();
+    //change error handling to new getValidationResult
     //errors = req.getValidationResult();
 
     if (errors){
