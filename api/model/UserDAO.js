@@ -11,20 +11,20 @@ UserDAO.prototype.signUp = function(req, res, userInfo) {
         if (err){
 
             return res.status(500).render('index', {
-                                                    validation: "",
-                                                    ok: "",
+                                                    validation: ``,
+                                                    ok: ``,
                                                     error: err,
-                                                    userData: ""
+                                                    userInfo: ``
                                                    });
 
         } else if (users.length !== 0){
 
             //precondition failed
             return res.status(412).render('index', {
-                                                    validation: "", 
-                                                    ok: "", 
+                                                    validation: ``, 
+                                                    ok: ``, 
                                                     error: `This username is already in use.`, 
-                                                    userData: ""
+                                                    userInfo: ``
                                                    });
 
         }
@@ -34,20 +34,20 @@ UserDAO.prototype.signUp = function(req, res, userInfo) {
             if (err){
 
                 return res.status(500).render('index', {
-                                                        validation: "", 
-                                                        ok: "", 
+                                                        validation: ``, 
+                                                        ok: ``, 
                                                         error: err, 
-                                                        userData: ""
+                                                        userInfo: ``
                                                        });
 
             } else if (users.length !== 0){
 
                 //precondition failed
                 return res.status(412).render('index', {
-                                                        validation: "", 
-                                                        ok: "", 
+                                                        validation: ``, 
+                                                        ok: ``, 
                                                         error: `This email is already in use.`, 
-                                                        userData: ""
+                                                        userInfo: ``
                                                        });
 
             }
@@ -60,27 +60,61 @@ UserDAO.prototype.signUp = function(req, res, userInfo) {
                 if (err){
 
                     return res.status(500).render('error', {
-                                                            validation: "",
-                                                            ok: "",
+                                                            validation: ``,
+                                                            ok: ``,
                                                             error: err,
-                                                            userData: ""
+                                                            userInfo: ``
                                                            });
 
                 }
 
                 username = userInfo.username;
                 id = result.ops[0]._id;
-
-                return res.status(200).render('index', {
-                                                        validation: "",
+                //resource created
+                return res.status(201).render('index', {
+                                                        validation: ``,
                                                         ok: `User signed up successfully.`,
-                                                        error: "", 
-                                                        userData: {id: id, username: username}
+                                                        error: ``, 
+                                                        userInfo: {id: id, username: username}
                                                        });
 
             });
 
         });
+
+    });
+
+}
+
+UserDAO.prototype.authenticate = function(req, res, userInfo){
+
+    let userSearch = this._connection.collection('user');
+
+    userSearch.findOne(userInfo, (err, user) => {
+
+        console.log(user);
+
+        if (err){
+
+            return res.status(500).render('index', {
+                                                    validation: ``,
+                                                    ok: ``,
+                                                    error: err, 
+                                                    userInfo: ``
+                                                   });
+
+        } else if (user === null){
+
+            return res.status(404).render('index', {
+                                                    validation: ``,
+                                                    ok: ``,
+                                                    error: `User not found or user does not exist.`, 
+                                                    userInfo: ``
+                                                   });
+
+        }
+
+        return res.status(200).send({ok: `User authenticated`});
 
     });
 

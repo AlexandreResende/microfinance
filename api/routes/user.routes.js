@@ -10,10 +10,12 @@ router.get('/', (req, res) => {
                          validation: "", 
                          ok: "", 
                          error: "", 
-                         userData: ""
+                         userInfo: ""
                         });
 });
 
 router.post('/signup', userController.signUp);
+
+router.post('/authenticate', userController.authenticate);
 
 module.exports = router;
