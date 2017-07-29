@@ -6,7 +6,15 @@ function UserDAO(connection) {
 
 UserDAO.prototype.signUp = function(req, res, userInfo) {
 
-    this._connection.collection('user').find({username: userInfo.username}).toArray((err, users) => {
+    let userSearch = this._connection.collection('user');
+    let username = {
+                    username: userInfo.username
+                   };
+    let email = {
+                 email: userInfo.email
+                };
+
+    userSearch.find(username).toArray((err, users) => {
 
         if (err){
 
@@ -29,7 +37,7 @@ UserDAO.prototype.signUp = function(req, res, userInfo) {
 
         }
 
-        this._connection.collection('user').find({email: userInfo.email}).toArray((err, users) => {
+        userSearch.find(email).toArray((err, users) => {
 
             if (err){
 
@@ -52,7 +60,7 @@ UserDAO.prototype.signUp = function(req, res, userInfo) {
 
             }
 
-            this._connection.collection('user').insert(userInfo, (err, result) => {
+            userSearch.insert(userInfo, (err, result) => {
                 
                 let username;
                 let id;
