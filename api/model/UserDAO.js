@@ -60,10 +60,10 @@ UserDAO.prototype.signUp = function(req, res, userInfo) {
 
             }
 
-            userSearch.insert(userInfo, (err, result) => {
+            userSearch.insert(userInfo, (err, userInsertResult) => {
                 
-                let username;
-                let id;
+                let username = userInfo.username;
+                let id = userInsertResult.ops[0]._id;
                 
                 if (err){
 
@@ -76,15 +76,54 @@ UserDAO.prototype.signUp = function(req, res, userInfo) {
 
                 }
 
-                username = userInfo.username;
-                id = result.ops[0]._id;
-                //resource created
-                return res.status(201).render('index', {
-                                                        validation: ``,
-                                                        ok: `User signed up successfully.`,
-                                                        error: ``, 
-                                                        userInfo: {id: id, username: username}
-                                                       });
+                let incomeInsert = this._connection.collection('income');
+                let expenseInsert = this._connection.collection('expense');
+                let incomeObj = {
+                                 ownerId: id,
+                                 incomes: []
+                                };
+                let expenseObj = {
+                                  ownerId: id,
+                                  expenses: []
+                                 };
+
+                incomeInsert.insert(incomeObj, (err, incomeResult) => {
+
+                    if (err){
+
+                        return res.status(500).render('error', {
+                                                                validation: ``,
+                                                                ok: ``,
+                                                                error: err,
+                                                                userInfo: ``
+                                                               });
+
+                    }
+
+                    expenseInsert.insert(expenseObj, (err, expenseResult) => {
+
+                        if (err){
+
+                            return res.status(500).render('error', {
+                                                                    validation: ``,
+                                                                    ok: ``,
+                                                                    error: err,
+                                                                    userInfo: ``
+                                                                   });
+
+                        }
+
+                        //resource created
+                        return res.status(201).render('index', {
+                                                                validation: ``,
+                                                                ok: `User signed up successfully.`,
+                                                                error: ``, 
+                                                                userInfo: {id: id, username: username}
+                                                               });
+
+                    });
+
+                });
 
             });
 
