@@ -36,8 +36,6 @@ module.exports.signUp = (req, res) => {
 }
 
 module.exports.authenticate = (req, res) => {
-    //SUBSTITUTE USERINFO TO USERDATE OR VICE VERSA
-    console.log(req.body);
 
     let userInfo = {
                     username: req.body.username,
