@@ -3,12 +3,13 @@ const router = express.Router();
 
 const incomeController = require('../controllers/income.controller');
 
-router.get('/income', incomeController.getAllIncomes);
+router.get('/incomes', incomeController.getAllIncomes);
 
-router.post('/income', incomeController.insertIncome);
+router.put('/incomes', incomeController.insertIncomes);
 
-router.put('/income/:incomeId', incomeController.updateIncome);
+router.delete('/incomes', incomeController.removeIncomes);
 
-router.delete('/income/:incomeId', incomeController.removeIncome);
+router.put('/editIncomes', incomeController.updateIncomes);
+
 
 module.exports = router;

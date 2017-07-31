@@ -1,40 +1,20 @@
+const ObjectId = require('mongodb').ObjectId;
+
 function IncomeDAO(connection){
 
     this._connection = connection;
 
 }
 
-/**
- * GET THE USER ID FROM THE SESSION AND FIND THE INCOMES
- * THAT BELONG TO HIM THE SCHEMA OF THE INCOMES CAN BE:
- * --------------------------------------------------------------------
- * {_ID, OWNERID, INCOMES[]} - INCOME WILL BE AN ARRAY OF OBJECTS
- * 
- * OR
- * 
- * {_ID, OWNERID, INCOME} - EACH INCOME WILL BE A SINGLE REGISTER
- * --------------------------------------------------------------------
- * THE LAST ONE SEEMS TO BE THE BEST ANSWER IN A WAY THAT WE WILL NOT
- * NEED TO LOOK IN THE ARRAY FOR THE ELEMENT...
- * 
- * THINK ABOUT MORE CAREFULLY...
- * 
- * THE INCOMES CAN BE ASSOCIATED WITH THE USER
- * MEANING IN THE SAME SCHEMA...
- * 
- * OR SEPARATED...
- * 
- * IF SEPARATED WE WILL HAVE TO CREATE AN INCOME AND DEBT
- * DOCUMENT FOR THE USER WHEN THE USER IS CREATED TO KEEP
- * TRACK OF ITS FINANCES
- */
-
-
 IncomeDAO.prototype.getAllIncomes = function(req, res){
 
-    let incomeSearch = this._connection.collection('income');
+    let userId = {
+                  _id: ObjectId('597f6ae0ed65aaa2c1425c9d')//req.session.userId
+                 };
 
-    incomeSearch.find({}).toArray( (err, allIncomes) => {
+    let userSearch = this._connection.collection('user');
+
+    userSearch.findOne(userId, (err, userResult) => {
 
         if (err){
 
@@ -43,7 +23,7 @@ IncomeDAO.prototype.getAllIncomes = function(req, res){
         }
 
         //create a function to sort the incomes by year and month
-        res.status(200).send({msg: `Returned all incomes successfully`, result: allIncomes});
+        res.status(200).send({msg: `Returned all incomes successfully`, result: userResult.incomes});
 
     });
 
@@ -51,15 +31,17 @@ IncomeDAO.prototype.getAllIncomes = function(req, res){
 
 IncomeDAO.prototype.insertIncomes = function(req, res, incomeInfo){
 
-    let incomeSearch = this._connection.collection('income');
+    let userId = {
+                  _id: ObjectId('597f6ae0ed65aaa2c1425c9d')//req.session.userId
+                 };
 
-    incomeSearch.insert(incomeInfo, (err, insertResult) => {
+    let userSearch = this._connection.collection('user');
 
-        console.log(insertResult);
+    userSearch.update(userId, {'$push': {incomes: incomeInfo}}, (err, insertResult) => {
 
         if (err){
 
-            res.status(500).send({error: `An error occurred.`});
+            res.status(500).send({error: `An error occurred. ${err}`});
 
         }
 
