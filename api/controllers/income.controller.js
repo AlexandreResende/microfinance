@@ -13,11 +13,12 @@ module.exports.getAllIncomes = (req, res) => {
 module.exports.insertIncomes = (req, res) => {
 
     let incomeInfo = {
-                  month: paraseInt(req.body.month),
-                  year: parseInt(req.body.year),
-                  value: parseFloat(req.body.incomeValue),
-                  description: req.body. description
-                 };
+                      _id: new ObjectId(),
+                      month: parseInt(req.body.month),
+                      year: parseInt(req.body.year),
+                      value: parseFloat(req.body.value),
+                      description: req.body.description
+                     };
 
 
     let incomeDAO = new IncomeDAO(dbConnection.getDb());
