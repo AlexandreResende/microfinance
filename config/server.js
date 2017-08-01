@@ -9,6 +9,7 @@ const helmet = require('helmet');
 //importing all the routes of the project
 let userRoutes = require('../api/routes/user.routes');
 let incomeRoutes = require('../api/routes/income.routes');
+let expenseRoutes = require("../api/routes/expense.routes");
 
 const app = express();
 
@@ -22,6 +23,7 @@ app.use(bodyParser.urlencoded({ extended: true}))
    .use(expressValidator())
    .use(userRoutes)
    .use(incomeRoutes)
+   .use(expenseRoutes)
    .use(expressSession({
                         secret: 'aiushriauhf', 
                         resave: true,
