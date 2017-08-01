@@ -9,12 +9,12 @@ function IncomeDAO(connection){
 IncomeDAO.prototype.getAllIncomes = function(req, res){
 
     let userId = {
-                  _id: ObjectId('597fccdb5623c9b346c275fd')//req.session.userId
+                  ownerId: ObjectId('597fccdb5623c9b346c275fd')//req.session.userId
                  };
 
-    let userSearch = this._connection.collection('user');
+    let incomesColl = this._connection.collection('incomes');
 
-    userSearch.findOne(userId, (err, userResult) => {
+    incomesColl.find(userId).toArray((err, userIncomesResult) => {
 
         if (err){
 
@@ -23,75 +23,61 @@ IncomeDAO.prototype.getAllIncomes = function(req, res){
         }
 
         //create a function to sort the incomes by year and month
-        res.status(200).send({msg: `Returned all incomes successfully`, result: userResult.incomes});
+        res.status(200).send({msg: `Returned all incomes successfully`, result: userIncomesResult});
 
     });
 
 }
 
-IncomeDAO.prototype.insertIncomes = function(req, res, incomeInfo){
+IncomeDAO.prototype.insertIncomes = function(req, res, userId, incomeInfo){
 
-    let userId = {
-                  _id: ObjectId('597fccdb5623c9b346c275fd')//req.session.userId
-                 };
+    let incomesColl = this._connection.collection('incomes'); 
 
-    let userSearch = this._connection.collection('user');
-
-    userSearch.update(userId, {'$push': {incomes: incomeInfo}}, (err, insertResult) => {
+    incomesColl.insert(incomeInfo, (err, insertResult) => {
 
         if (err){
 
-            res.status(500).send({error: `An error occurred. ${err}`});
+            return es.status(500).send({error: `An error occurred. ${err}`});
 
         }
 
-        //create a function to sort the incomes by year and month
-        res.status(200).send({msg: `Income inserted.`, result: insertResult});
+        return res.status(201).send({msg: `Income inserted`, result: insertResult.ops[0]});
 
-    });
+    });   
 
 }
 
 IncomeDAO.prototype.updateIncomes = function(req, res, incomeId, updateInfo){
 
-    console.log(incomeId);
-    console.log(updateInfo);
+    let incomesColl = this._connection.collection('incomes');
 
-    let userId = {
-                  _id: ObjectId('597fccdb5623c9b346c275fd')//req.session.userId
-                 };
-
-    let incomeSearch = this._connection.collection('user');
-
-    incomeSearch.update({_id: ObjectId('597fccdb5623c9b346c275fd'), "incomes.incomeId": incomeId.incomeId}, {$set: {"incomes.$": updateInfo}}, (err, updateResult) => {
+    incomesColl.update(incomeId, {$set: updateInfo}, (err, updateResult) => {
 
         if (err){
 
-            res.status(500).send({error: `An error occurred. ${err}`});
+            return es.status(500).send({error: `An error occurred. ${err}`});
 
         }
 
-        //create a function to sort the incomes by year and month
-        res.status(200).send({msg: `Income updated`, result: updateResult});
+        return res.status(200).send({msg: `Income updated`, result: updateResult});
 
     });
 
 }
 
-IncomeDAO.prototype.removeIncomes = function(req, res, incomeInfo){
+IncomeDAO.prototype.removeIncomes = function(req, res, incomeId){
 
-    let incomeSearch = this._connection.collection('income');
+    let incomesColl = this._connection.collection('incomes');
 
-    incomeSearch.remove(incomeInfo, (err, removeResult) => {
+    incomesColl.remove(incomeId, (err, removeResult) => {
 
         if (err){
 
-            res.status(500).send({error: `An error occurred.`});
+            return es.status(500).send({error: `An error occurred. ${err}`});
 
         }
 
-        //create a function to sort the incomes by year and month
-        res.status(200).send({msg: `Income removed.`, result: removeResult});
+        return res.status(200).send({msg: `Income updated`, result: removeResult});
 
     });
 
