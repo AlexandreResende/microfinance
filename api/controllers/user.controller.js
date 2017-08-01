@@ -7,9 +7,7 @@ module.exports.signUp = (req, res) => {
                     username: req.body.username,
                     password: req.body.password,
                     email: req.body.email,
-                    incomes: [],
-                    expenses: []
-                    };
+                   };
     let errors;
     let user;
 

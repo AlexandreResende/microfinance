@@ -5,11 +5,11 @@ const incomeController = require('../controllers/income.controller');
 
 router.get('/incomes', incomeController.getAllIncomes);
 
-router.put('/incomes', incomeController.insertIncomes);
+router.post('/incomes', incomeController.insertIncomes);
 
 router.delete('/incomes', incomeController.removeIncomes);
 
-router.put('/editincomes', incomeController.updateIncomes);
+router.put('/incomes', incomeController.updateIncomes);
 
 
 module.exports = router;
