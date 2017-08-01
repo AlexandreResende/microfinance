@@ -9,7 +9,7 @@ router.put('/incomes', incomeController.insertIncomes);
 
 router.delete('/incomes', incomeController.removeIncomes);
 
-router.put('/editIncomes', incomeController.updateIncomes);
+router.put('/editincomes', incomeController.updateIncomes);
 
 
 module.exports = router;

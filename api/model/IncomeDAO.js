@@ -9,7 +9,7 @@ function IncomeDAO(connection){
 IncomeDAO.prototype.getAllIncomes = function(req, res){
 
     let userId = {
-                  _id: ObjectId('597f6ae0ed65aaa2c1425c9d')//req.session.userId
+                  _id: ObjectId('597fccdb5623c9b346c275fd')//req.session.userId
                  };
 
     let userSearch = this._connection.collection('user');
@@ -32,7 +32,7 @@ IncomeDAO.prototype.getAllIncomes = function(req, res){
 IncomeDAO.prototype.insertIncomes = function(req, res, incomeInfo){
 
     let userId = {
-                  _id: ObjectId('597f6ae0ed65aaa2c1425c9d')//req.session.userId
+                  _id: ObjectId('597fccdb5623c9b346c275fd')//req.session.userId
                  };
 
     let userSearch = this._connection.collection('user');
@@ -52,15 +52,22 @@ IncomeDAO.prototype.insertIncomes = function(req, res, incomeInfo){
 
 }
 
-IncomeDAO.prototype.updateIncomes = function(req, res, incomeInfo, updateInfo){
+IncomeDAO.prototype.updateIncomes = function(req, res, incomeId, updateInfo){
 
-    let incomeSearch = this._connection.collection('income');
+    console.log(incomeId);
+    console.log(updateInfo);
 
-    incomeSearch.update(incomeInfo, updateInfo, (err, updateResult) => {
+    let userId = {
+                  _id: ObjectId('597fccdb5623c9b346c275fd')//req.session.userId
+                 };
+
+    let incomeSearch = this._connection.collection('user');
+
+    incomeSearch.update({_id: ObjectId('597fccdb5623c9b346c275fd'), "incomes.incomeId": incomeId.incomeId}, {$set: {"incomes.$": updateInfo}}, (err, updateResult) => {
 
         if (err){
 
-            res.status(500).send({error: `An error occurred.`});
+            res.status(500).send({error: `An error occurred. ${err}`});
 
         }
 

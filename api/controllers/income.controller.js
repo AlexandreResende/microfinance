@@ -13,7 +13,7 @@ module.exports.getAllIncomes = (req, res) => {
 module.exports.insertIncomes = (req, res) => {
 
     let incomeInfo = {
-                      _id: new ObjectId(),
+                      incomeId: new ObjectId(),
                       month: parseInt(req.body.month),
                       year: parseInt(req.body.year),
                       value: parseFloat(req.body.value),
@@ -28,20 +28,20 @@ module.exports.insertIncomes = (req, res) => {
 
 module.exports.updateIncomes = (req, res) => {
 
-    let incomeInfo = {
-                      _id: req.params._id
-                     };
+    let incomeId = {
+                    incomeId: ObjectId('597fd48624f920b520997f83')//req.params._id
+                   };
     let updateInfo = req.body;
 
     let incomeDAO = new IncomeDAO(dbConnection.getDb());
-    incomeDAO.updateIncomes(req, res, incomeInfo, updateInfo);
+    incomeDAO.updateIncomes(req, res, incomeId, updateInfo);
 
 };
 
 module.exports.removeIncomes = (req, res) => {
 
     let incomeInfo = {
-                      _id: ObjectId(req.params._id)
+                      incomeId: ObjectId(req.params._id)
                      };
 
     let incomeDAO = new IncomeDAO(dbConnection.getDb());
