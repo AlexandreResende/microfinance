@@ -4848,14 +4848,14 @@ small {
 }
 
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
-  color: #ffab40;
+  color: #023e68;
   margin-right: 24px;
   transition: color .3s ease;
   text-transform: uppercase;
 }
 
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating):hover {
-  color: #ffd8a6;
+  color: #0490f2;
 }
 
 .card .card-reveal {
@@ -5014,7 +5014,7 @@ small {
 }
 
 .tabs .tab a {
-  color: rgba(238, 110, 115, 0.7);
+  color: rgba(2, 62, 104, 0.9);
   display: block;
   width: 100%;
   height: 100%;
@@ -5027,12 +5027,12 @@ small {
 
 .tabs .tab a:hover, .tabs .tab a.active {
   background-color: transparent;
-  color: #ee6e73;
+  color: #0490f2;
 }
 
 .tabs .tab.disabled a,
 .tabs .tab.disabled a:hover {
-  color: rgba(238, 110, 115, 0.7);
+  color: rgba(2, 62, 104, 0.9);
   cursor: default;
 }
 
@@ -5040,7 +5040,7 @@ small {
   position: absolute;
   bottom: 0;
   height: 2px;
-  background-color: #f6b2b5;
+  background-color: #0490f2;
   will-change: left, right;
 }
 
@@ -5521,6 +5521,10 @@ button.btn-floating {
   background-color: rgba(0, 150, 136, 0.7);
 }
 
+.waves-effect.waves-blue .waves-ripple {
+  background-color: rgba(2, 126, 214, 0.7);
+}
+
 .waves-effect input[type="button"], .waves-effect input[type="reset"], .waves-effect input[type="submit"] {
   border: 0;
   font-style: normal;
@@ -5617,7 +5621,7 @@ button.btn-floating {
 }
 
 .modal .modal-footer .btn, .modal .modal-footer .btn-large, .modal .modal-footer .btn-flat {
-  margin: 4px 0;
+  margin: 6px 0;
 }
 
 .modal-overlay {
