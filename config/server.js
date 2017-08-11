@@ -21,14 +21,14 @@ app.use(bodyParser.urlencoded({ extended: true}))
    .use(bodyParser.json())
    .use(express.static('./api/public'))
    .use(expressValidator())
+   .use(expressSession({
+                        secret: 'aiushriauhf', 
+                        resave: false,
+                        saveUninitialized: false
+                       }))
    .use(userRoutes)
    .use(incomeRoutes)
    .use(expenseRoutes)
-   .use(expressSession({
-                        secret: 'aiushriauhf', 
-                        resave: true,
-                        saveUninitialized: false
-                       }))
    .use(helmet());
 
 

@@ -38,7 +38,7 @@ module.exports.signUp = (req, res) => {
 module.exports.authenticate = (req, res) => {
 
     let userInfo = {
-                    username: req.body.username,
+                    email: req.body.username,
                     password: req.body.password
                    };
     let user;

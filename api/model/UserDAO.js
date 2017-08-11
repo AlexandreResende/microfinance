@@ -96,6 +96,8 @@ UserDAO.prototype.authenticate = function(req, res, userInfo){
 
     let userSearch = this._connection.collection('user');
 
+    console.log(userInfo);
+
     userSearch.findOne(userInfo, (err, user) => {
 
         if (err){
@@ -120,10 +122,10 @@ UserDAO.prototype.authenticate = function(req, res, userInfo){
 
         //creating session for a authenticated user
         req.session.authenticated = true;
-        req.session.userId = user._id;
+        req.session.userId = user._id; 
 
         //redirect to the logged page - still dont have it
-        return res.status(200).send({ok: `User authenticated`});
+        return res.status(200).render('home', {ok: `User authenticated`});
 
     });
 
