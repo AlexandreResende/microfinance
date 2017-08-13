@@ -29,7 +29,7 @@ ExpenseDAO.prototype.getAllExpenses = function(req, res){
 
 }
 
-ExpenseDAO.prototype.insertExpenses = function(req, res, userId, expenseInfo){
+ExpenseDAO.prototype.insertExpenses = function(req, res, expenseInfo){
 
     let expensesColl = this._connection.collection('expenses'); 
 

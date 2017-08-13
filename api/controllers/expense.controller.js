@@ -12,21 +12,17 @@ module.exports.getAllExpenses = (req, res) => {
 
 module.exports.insertExpenses = (req, res) => {
 
-    let userId = {
-                  _id: ObjectId('597feceebf4606bb4b01201b')//req.session.userId
-                 };
-
     let expenseInfo = {
                       ownerId: ObjectId('597feceebf4606bb4b01201b')/*userId._id*/,
                       month: parseInt(req.body.month),
                       year: parseInt(req.body.year),
-                      value: parseFloat(req.body.value),
+                      value: - parseFloat(req.body.value),
                       description: req.body.description
                      };
 
 
     let expenseDAO = new ExpenseDAO(dbConnection.getDb());
-    expenseDAO.insertExpenses(req, res, userId, expenseInfo);
+    expenseDAO.insertExpenses(req, res, expenseInfo);
 
 };
 
