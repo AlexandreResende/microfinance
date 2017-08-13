@@ -11,5 +11,7 @@ router.delete('/incomes', incomeController.removeIncomes);
 
 router.put('/incomes', incomeController.updateIncomes);
 
+router.get('/monthlyIncome', incomeController.getIncomesCurrentMonth);
+
 
 module.exports = router;

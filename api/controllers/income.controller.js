@@ -51,3 +51,10 @@ module.exports.removeIncomes = (req, res) => {
     incomeDAO.removeIncomes(req, res, incomeId);
 
 };
+
+module.exports.getIncomesCurrentMonth = (req, res) => {
+
+    let incomeDAO = new IncomeDAO(dbConnection.getDb());
+    incomeDAO.getIncomesCurrentMonth(req, res);
+
+};

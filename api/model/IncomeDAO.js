@@ -83,4 +83,30 @@ IncomeDAO.prototype.removeIncomes = function(req, res, incomeId){
 
 }
 
+IncomeDAO.prototype.getIncomesCurrentMonth = function(req, res){
+
+    const date = new Date();
+    const month = date.getMonth() + 1; //getMonth starts at 0
+    const year = date.getFullYear();
+
+    let searchObj = {
+                     month: month,
+                     year: year
+                    };
+
+    let incomesColl = this._connection.collection('incomes');
+
+    incomesColl.find(searchObj).toArray((err, findResult) => {
+
+        if (err){
+
+            return es.status(500).send({error: `An error occurred. ${err}`});
+
+        }
+
+        return res.status(200).send({result: findResult});
+
+    });
+
+}
 module.exports = IncomeDAO;
