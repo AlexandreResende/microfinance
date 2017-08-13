@@ -12,12 +12,11 @@ module.exports.getAllIncomes = (req, res) => {
 
 module.exports.insertIncomes = (req, res) => {
 
-    let userId = {
-                  _id: ObjectId('597feceebf4606bb4b01201b')//req.session.userId
-                 };
+    console.log(req.body);
+    console.log(req.session.userId);
 
     let incomeInfo = {
-                      ownerId: ObjectId('597feceebf4606bb4b01201b')/*userId._id*/,
+                      ownerId: ObjectId(req.session.userId),
                       month: parseInt(req.body.month),
                       year: parseInt(req.body.year),
                       value: parseFloat(req.body.value),
@@ -26,7 +25,7 @@ module.exports.insertIncomes = (req, res) => {
 
 
     let incomeDAO = new IncomeDAO(dbConnection.getDb());
-    incomeDAO.insertIncomes(req, res, userId, incomeInfo);
+    incomeDAO.insertIncomes(req, res, incomeInfo);
 
 };
 

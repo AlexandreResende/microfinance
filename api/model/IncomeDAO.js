@@ -29,7 +29,7 @@ IncomeDAO.prototype.getAllIncomes = function(req, res){
 
 }
 
-IncomeDAO.prototype.insertIncomes = function(req, res, userId, incomeInfo){
+IncomeDAO.prototype.insertIncomes = function(req, res, incomeInfo){
 
     let incomesColl = this._connection.collection('incomes'); 
 
@@ -37,11 +37,11 @@ IncomeDAO.prototype.insertIncomes = function(req, res, userId, incomeInfo){
 
         if (err){
 
-            return es.status(500).send({error: `An error occurred. ${err}`});
+            return es.status(500).render('home', {error: `An error occurred. ${err}`});
 
         }
 
-        return res.status(201).send({msg: `Income inserted`, result: insertResult.ops[0]});
+        return res.status(201).render('home', {msg: `Income inserted`, result: insertResult.ops[0]});
 
     });   
 

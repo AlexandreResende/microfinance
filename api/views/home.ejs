@@ -68,7 +68,8 @@
 				    <div class="card-content grey lighten-4">
 				    	<div id="tabReceitas">
 				    		<a href="#modalNovaReceita" id="download-button" class="btn-large waves-effect waves-light teal lighten-1"><i class="material-icons left">add</i>Nova Receita</a>
-				    		<ul class="collapsible" data-collapsible="accordion">
+				    		<ul class="collapsible" data-collapsible="accordion" id="incomesHolder">
+								<!--
 			  					<li>
 			    					<div class="collapsible-header">Receita 1</div>
 			    					<div class="collapsible-body">
@@ -77,19 +78,13 @@
 			    						<a class="waves-effect waves-blue btn-flat"><i class="material-icons left">delete</i>Excluir</a>
 			    					</div>
 			  					</li>
-			  					<li>
-			    					<div class="collapsible-header">Receita 2</div>
-			    					<div class="collapsible-body">
-			    						<p>Conteúdo do item selecionado. Receita 2</p>
-			    						<a class="waves-effect waves-blue btn-flat"><i class="material-icons left">create</i>Alterar</a>
-			    						<a class="waves-effect waves-blue btn-flat"><i class="material-icons left">delete</i>Excluir</a>
-			    					</div>
-			  					</li>
+								-->
 							</ul>
 				    	</div>
 				    	<div id="tabDespesas">
 				    		<a href="#modalNovaDespesa" id="download-button" class="btn-large waves-effect waves-light teal lighten-1"><i class="material-icons left">add</i>Nova Despesa</a>
-				    		<ul class="collapsible" data-collapsible="accordion">
+				    		<ul class="collapsible" data-collapsible="accordion" id="expensesHolder">
+								<!--
 			  					<li>
 			    					<div class="collapsible-header">Despesa 1</div>
 			    					<div class="collapsible-body">
@@ -98,14 +93,7 @@
 			    						<a class="waves-effect waves-blue btn-flat"><i class="material-icons left">delete</i>Excluir</a>
 			    					</div>
 			  					</li>
-			  					<li>
-			    					<div class="collapsible-header">Despesa 2</div>
-			    					<div class="collapsible-body">
-			    						<p>Conteúdo do item selecionado. Despesa 2</p>
-			    						<a class="waves-effect waves-blue btn-flat"><i class="material-icons left">create</i>Alterar</a>
-			    						<a class="waves-effect waves-blue btn-flat"><i class="material-icons left">delete</i>Excluir</a>
-			    					</div>
-			  					</li>
+							-->
 							</ul>
 				    	</div>
 				    </div>
@@ -179,10 +167,10 @@
 		<h5 class="center">Nova Receita</h5>
 		<div class="divider"></div>
 		<div class="container center-align">
-			<form class="col s12 center-align">
+			<form class="col s12 center-align" action="/incomes" method="POST">
             	<div class="row center-align">
             		<div class="input-field col s12">
-					    <select class="browser-default">
+					    <select class="browser-default" name="month">
 					    <!--ainda implementando javascript para preencher
 					      <option value="" disabled selected>Selecione o Mês</option>-->
 					      <option value="1">Janeiro</option>
@@ -200,35 +188,32 @@
 					    </select>
 					</div>
             		<div class="input-field col s12">
-                         <select class="browser-default" id="comboAnosReceita">
+                         <select class="browser-default" id="comboAnosReceita" name="year">
 					    </select>
                     </div>
             	</div>
-                <div class="row center">
+				<div class="row">
                     <div class="input-field col s12">
-                        <input id="description" type="text" class="validate">
-                        <label>Descrição</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="value" type="number" class="validate" step="any">
+                        <input id="value" type="number" class="validate" step="any" name="value">
                         <label>Valor (R$)</label>
                     </div>
                 </div>
+                <div class="row center">
+                    <div class="input-field col s12">
+                        <input id="description" type="text" class="validate" name="description">
+                        <label>Descrição</label>
+                    </div>
+                </div>
+				<div class="divider"></div>
+				<div class="modal-footer">
+					<a href="#!" class="modal-action modal-close waves-effect waves-blue btn-flat center-align">
+						<i class="material-icons left">cancel</i>cancelar
+					</a>
+					<button class="btn btn-default waves-effect waves-light center" type="submit" name="action">Submit <i class="material-icons right">salvar</i> </button>
+				</div>
             </form>
             </div>
 		</div>
-		<div class="divider"></div>
-		<div class="modal-footer">
-			<a href="#!" class="modal-action modal-close waves-effect waves-blue btn-flat center-align">
-				<i class="material-icons left">cancel</i>cancelar
-			</a>
-		  	<a href="#!" class="modal-action modal-close waves-effect waves-blue btn-flat center-align">
-		  		<i class="material-icons left">check</i>salvar
-		  	</a>
-		</div>
-
 	</div>
 
     <!--  Scripts-->
