@@ -10,32 +10,39 @@
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" type="text/css" href="css/materialize.css" media="screen, projection">
 
+  <!-- ICON PAGE -->
+  <link rel="icon" href="images/ic_launcher_micro_finance.png" sizes="32x32">
+
   <title>Microfinance: Receitas</title>
 
 </head>
 <body onload="ano()">
   <!-- NAVBAR COM MARCAÇÃO DE PÁGINA - ITEM ATIVO -->
-  <nav class="blue-special" role="navigation">
-    <div class="nav-wrapper container">
-      <a id="logo-container" href="#" class="brand-logo">Micro Finance</a>
-      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-      <!-- LAYOUT DESKTOP-->
-      <ul class="right hide-on-med-and-down">
-        <li><a href=""><i class="material-icons left">home</i>Home</a></li>
-        <li class="active"><a href=""><i class="material-icons left">local_atm</i>Minhas Receitas</a></li>
-        <li><a href=""><i class="material-icons left">money_off</i>Minhas Despesas</a></li>
-        <li><a href=""><i class="material-icons left">payment</i>Simular Precidência</a></li>
-      </ul>  
-      <!-- LAYOUT MOBILE-->
-      <ul id="mobile-demo" class="side-nav">
-        <li><a href=""><i class="material-icons left">home</i>Home</a></li>
-        <li class="active"><a href=""><i class="material-icons left">local_atm</i>Minhas Receitas</a></li>
-        <li><a href=""><i class="material-icons left">money_off</i>Minhas Despesas</a></li>
-        <li><a href=""><i class="material-icons left">payment</i>Simular Previdência</a></li>
-      </ul>
-    </div>
-  </nav>
-
+  <!-- NAVBAR FIXO -->
+  <div class="navbar-fixed">
+    <nav class="blue-special" role="navigation">
+      <div class="nav-wrapper container">
+        <a id="logo-container" href="index.html" class="brand-logo">Micro Finance</a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <!-- LAYOUT DESKTOP-->
+        <ul class="right hide-on-med-and-down">
+          <li><a href="home.html"><i class="material-icons left">home</i>Home</a></li>
+          <li class="active"><a href="receitas.html"><i class="material-icons left">local_atm</i>Minhas Receitas</a></li>
+          <li><a href="despesas.html"><i class="material-icons left">money_off</i>Minhas Despesas</a></li>
+          <li><a href=""><i class="material-icons left">payment</i>Simular Precidência</a></li>
+        </ul>  
+        <!-- LAYOUT MOBILE-->
+        <ul id="mobile-demo" class="side-nav">
+          <li><a href="home.html"><i class="material-icons left">home</i>Home</a></li>
+          <li class="active"><a href="receitas.html"><i class="material-icons left">local_atm</i>Minhas Receitas</a></li>
+          <li><a href="despesas.html"><i class="material-icons left">money_off</i>Minhas Despesas</a></li>
+          <li><a href=""><i class="material-icons left">payment</i>Simular Previdência</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <br>
+  <br>
   <!-- ÁREA RESERVADA PARA BUSCA DAS RECEITAS -->
   <div class="container">
     <div class="card horizontal">
@@ -121,12 +128,6 @@
     </div>
   </div>
 
-  <!-- caso queira colocar no canto inferior direito da página é só tirar o comentário
-  <div class="fixed-action-btn horizontal">
-    <a class="btn-floating btn-large waves-effect waves-light blue dark right" href="#modalNovaReceita"><i class="material-icons">add</i></a>
-  </div>
-  -->
-
   <!-- MODAL NOVA RECEITA -->
   <div id="modalNovaReceita" class="modal">
     <div class="modal-content">
@@ -177,6 +178,14 @@
       </div>
     </div>
   </div>
+  <br>
+  <footer class="page-footer">
+    <div class="footer-copyright">
+      <div class="container center">
+        © 2017 Copyright Microfinance <a class="brown-text text-lighten-3" href="#">11 Group</a>
+      </div>
+    </div>
+  </footer>
   
   <!--Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>

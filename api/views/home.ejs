@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<!-- META-DATA -->
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
 
@@ -8,68 +9,72 @@
 	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="stylesheet" type="text/css" href="css/materialize.css" media="screen,projection">
 	<link rel="stylesheet" type="text/css" href="css/style.css" media="screen,projection">
+
+    <!-- ICON PAGE -->
+    <link rel="icon" href="images/ic_launcher_micro_finance.png" sizes="32x32">
+
 	<title></title>
 </head>
 <body onload="preencheAno()">
-	<nav class="blue-special" role="navigation">
-		<div class="nav-wrapper container">
-			<a id="logo-container" href="#" class="brand-logo">Micro Finance</a>
-			<ul class="right hide-on-med-and-down">
-				<li><a href="#"><i class="material-icons left">home</i>Home</a></li>
-				<li><a href="#"><i class="material-icons left">local_atm</i>Minhas Receitas</a></li>
-				<li><a href="#"><i class="material-icons left">money_off</i>Minhas Despesas</a></li>
-				<li><a href="#"><i class="material-icons left">payment</i>Simulação de Previdência</a></li>
-			</ul>
+	<!-- NAVBAR FIXO -->
+	<div class="navbar-fixed">
+		<nav class="blue-special" role="navigation">
+			<div class="nav-wrapper container">
+				<a id="logo-container" href="index.html" class="brand-logo">Micro Finance</a>
+				<ul class="right hide-on-med-and-down">
+					<li class="active"><a href="home.html"><i class="material-icons left">home</i>Home</a></li>
+					<li><a href="receitas.html"><i class="material-icons left">local_atm</i>Minhas Receitas</a></li>
+					<li><a href="despesas.html"><i class="material-icons left">money_off</i>Minhas Despesas</a></li>
+					<li><a href="#"><i class="material-icons left">payment</i>Simulação de Previdência</a></li>
+				</ul>
 
-			<ul id="nav-mobile" class="side-nav">
-				<li><a href="#"><i class="material-icons left">home</i>Home</a></li>
-				<li><a href="#"><i class="material-icons left">local_atm</i>Minhas Receitas</a></li>
-				<li><a href="#"><i class="material-icons left">money_off</i>Minhas Despesas</a></li>
-				<li><a href="#"><i class="material-icons left">payment</i>Simulação de Previdência</a></li>
-			</ul>
-			<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-		</div>
-	</nav>
-
+				<ul id="nav-mobile" class="side-nav">
+					<li class="active"><a href="home.html"><i class="material-icons left">home</i>Home</a></li>
+					<li><a href="receitas.html"><i class="material-icons left">local_atm</i>Minhas Receitas</a></li>
+					<li><a href="despesas.html"><i class="material-icons left">money_off</i>Minhas Despesas</a></li>
+					<li><a href="#"><i class="material-icons left">payment</i>Simulação de Previdência</a></li>
+				</ul>
+				<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+			</div>
+		</nav>
+	</div>
+	<br>
 	<!--Container da linha dos dados-->
 	<div class="container">
 		<div class="row">
 			<!--Card com os dados do Usuário-->
-			<div class="col s12 m6">
-		    	<div class="card horizontal">
+			<div class="col s12 m12">
+		    	<div class="card small horizontal">
 		      		<div class="card-image">
-		        		<img src="images/image-1.jpg">
+		        		<img src="images/image-1.jpg" height="250px">
 		      		</div>
 			      	<div class="card-stacked">
 			        	<div class="card-content">
 			        		<h5 class="header">Dados do usuário</h5>
-			        		<p>Aqui pode ser os dados do usuário como ex.:</p>
 			        		<p>Nome Completo</p>
 			        		<p>E-mail</p>
 			        	</div>
 			        	<div class="card-action">
-			          		<a href="#"><i class="material-icons left">lock_open</i>Logout</a>
+			          		<a href="#" class="right"><i class="material-icons left">lock_open</i>Logout</a>
 			        	</div>
 			      	</div>
 		    	</div>
 		  	</div>
-		  	<div class="col s12 m6">
+		</div>
+		<div class="row">
+		  	<div class="col s12 m12">
 		  		<!--Card com Tabs-->
 			    <div class="card">
-				    <div class="card-content">
-				      <p>Todos os dados registrados do mês corrente.</p>
-				    </div>
 				    <div class="card-tabs">
 					    <ul class="tabs tabs-fixed-width">
-					       <li class="tab"><a class="active" href="#tabReceitas">Receitas</a></li>
-					       <li class="tab"><a href="#tabDespesas">Despesas</a></li>
+					       <li class="tab"><a href="#tabReceitas">Receitas</a></li>
+					       <li class="tab"><a class="active" href="#tabDespesas">Despesas</a></li>
 					    </ul>
 				    </div>
 				    <div class="card-content grey lighten-4">
 				    	<div id="tabReceitas">
-				    		<a href="#modalNovaReceita" id="download-button" class="btn-large waves-effect waves-light teal lighten-1"><i class="material-icons left">add</i>Nova Receita</a>
-				    		<ul class="collapsible" data-collapsible="accordion" id="incomesHolder">
-								<!--
+				    		<a href="#modalNovaReceita" id="download-button" class="btn waves-effect waves-light teal lighten-1"><i class="material-icons left">add</i>Nova Receita</a>
+				    		<ul class="collapsible" data-collapsible="accordion">
 			  					<li>
 			    					<div class="collapsible-header">Receita 1</div>
 			    					<div class="collapsible-body">
@@ -78,13 +83,19 @@
 			    						<a class="waves-effect waves-blue btn-flat"><i class="material-icons left">delete</i>Excluir</a>
 			    					</div>
 			  					</li>
-								-->
+			  					<li>
+			    					<div class="collapsible-header">Receita 2</div>
+			    					<div class="collapsible-body">
+			    						<p>Conteúdo do item selecionado. Receita 2</p>
+			    						<a class="waves-effect waves-blue btn-flat"><i class="material-icons left">create</i>Alterar</a>
+			    						<a class="waves-effect waves-blue btn-flat"><i class="material-icons left">delete</i>Excluir</a>
+			    					</div>
+			  					</li>
 							</ul>
 				    	</div>
 				    	<div id="tabDespesas">
-				    		<a href="#modalNovaDespesa" id="download-button" class="btn-large waves-effect waves-light teal lighten-1"><i class="material-icons left">add</i>Nova Despesa</a>
-				    		<ul class="collapsible" data-collapsible="accordion" id="expensesHolder">
-								<!--
+				    		<a href="#modalNovaDespesa" id="download-button" class="btn waves-effect waves-light teal lighten-1"><i class="material-icons left">add</i>Nova Despesa</a>
+				    		<ul class="collapsible" data-collapsible="accordion">
 			  					<li>
 			    					<div class="collapsible-header">Despesa 1</div>
 			    					<div class="collapsible-body">
@@ -93,7 +104,14 @@
 			    						<a class="waves-effect waves-blue btn-flat"><i class="material-icons left">delete</i>Excluir</a>
 			    					</div>
 			  					</li>
-							-->
+			  					<li>
+			    					<div class="collapsible-header">Despesa 2</div>
+			    					<div class="collapsible-body">
+			    						<p>Conteúdo do item selecionado. Despesa 2</p>
+			    						<a class="waves-effect waves-blue btn-flat"><i class="material-icons left">create</i>Alterar</a>
+			    						<a class="waves-effect waves-blue btn-flat"><i class="material-icons left">delete</i>Excluir</a>
+			    					</div>
+			  					</li>
 							</ul>
 				    	</div>
 				    </div>
@@ -167,10 +185,10 @@
 		<h5 class="center">Nova Receita</h5>
 		<div class="divider"></div>
 		<div class="container center-align">
-			<form class="col s12 center-align" action="/incomes" method="POST">
+			<form class="col s12 center-align">
             	<div class="row center-align">
             		<div class="input-field col s12">
-					    <select class="browser-default" name="month">
+					    <select class="browser-default">
 					    <!--ainda implementando javascript para preencher
 					      <option value="" disabled selected>Selecione o Mês</option>-->
 					      <option value="1">Janeiro</option>
@@ -188,41 +206,47 @@
 					    </select>
 					</div>
             		<div class="input-field col s12">
-                         <select class="browser-default" id="comboAnosReceita" name="year">
+                         <select class="browser-default" id="comboAnosReceita">
 					    </select>
                     </div>
             	</div>
-				<div class="row">
-                    <div class="input-field col s12">
-                        <input id="value" type="number" class="validate" step="any" name="value">
-                        <label>Valor (R$)</label>
-                    </div>
-                </div>
                 <div class="row center">
                     <div class="input-field col s12">
-                        <input id="description" type="text" class="validate" name="description">
+                        <input id="description" type="text" class="validate">
                         <label>Descrição</label>
                     </div>
                 </div>
-				<div class="divider"></div>
-				<div class="modal-footer">
-					<a href="#!" class="modal-action modal-close waves-effect waves-blue btn-flat center-align">
-						<i class="material-icons left">cancel</i>cancelar
-					</a>
-					<button class="btn btn-default waves-effect waves-light center" type="submit" name="action">Submit <i class="material-icons right">salvar</i> </button>
-				</div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="value" type="number" class="validate" step="any">
+                        <label>Valor (R$)</label>
+                    </div>
+                </div>
             </form>
             </div>
 		</div>
+		<div class="divider"></div>
+		<div class="modal-footer">
+			<a href="#!" class="modal-action modal-close waves-effect waves-blue btn-flat center-align">
+				<i class="material-icons left">cancel</i>cancelar
+			</a>
+		  	<a href="#!" class="modal-action modal-close waves-effect waves-blue btn-flat center-align">
+		  		<i class="material-icons left">check</i>salvar
+		  	</a>
+		</div>
 	</div>
-
+    <footer class="page-footer">
+      <div class="footer-copyright">
+        <div class="container center">
+          © 2017 Copyright Microfinance <a class="brown-text text-lighten-3" href="#">11 Group</a>
+        </div>
+      </div>
+    </footer>
     <!--  Scripts-->
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="js/materialize.js"></script>
     <script src="js/init.js"></script>
     <script src="js/modal.js"></script>
-
-
   	<script type="text/javascript" src="js/preencher.js"></script>
 </body>
 </html>
