@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- META-DATA -->
+  <meta charset="utf-8" lang="pt-br">
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <!-- CSS -->
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/page-center.css">
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" type="text/css" href="css/materialize.css" media="screen, projection">
+
+  <!-- ICON PAGE -->
+  <link rel="icon" href="images/ic_launcher_micro_finance.png" sizes="32x32">
+
+  <title>Registro de Conta</title>
+</head>
+<body>
+  <nav class="blue-special" role="navigation">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="index.html" class="brand-logo center">Micro Finance</a>
+    </div>
+  </nav>
+
+  <div id="login-page" class="row">
+    <div class="col s12 z-depth-4 card-panel">
+      <form class="login-form" action="/signup" method="POST">
+        <div class="input-field col s12 center">
+          <a href="index.html"><img src="images/ic_launcher_micro_finance.png" width="100px" height="100px" class="circle responsive-img valign profile-image-login" alt="Launcher image"></a>
+          <h6>Vamos registrar a sua conta?</h6>
+        </div>
+        <div class="card-content">
+          <div class="row">
+            <div class="col s10 m12">
+              <div class="input-field">
+                <input class="validate" id="name" type="text" name="username">
+                <label for="name">Nome de Usuário</label>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s10 m12">
+              <div class="input-field">
+                <input id="pass" type="password" class="validate" name="password">
+                <label for="pass">Senha</label>
+              </div>
+            </div>
+          </div> 
+          <div class="row">
+            <div class="col s10 m12">
+              <div class="input-field">
+                <input class="validate" id="email" type="email">
+                <label for="email" data-error="Digite um e-mail válido." data-success="E-mail válido.">E-mail</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="center-align">
+          <button class="btn waves-effect waves-light teal lighten-1" type="submit" name="action"><i class="material-icons left">done</i>Cadastrar</button>
+        </div>
+      </form>
+      <br>
+      <div class="row">
+        <div class="col s12 center-align">
+          <a href="login.html">Já possui conta? Entrar.</a>
+        </div>
+    </div>
+  </div>
+</div>
+
+  <!--Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+</body>
+</html>
