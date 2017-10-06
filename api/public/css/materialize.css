@@ -2867,7 +2867,7 @@ ul.staggered-list li {
 
 .page-footer {
   padding-top: 20px;
-  background-color: #ee6e73;
+  background-color: #005a98;
 }
 
 .page-footer .footer-copyright {
@@ -7373,7 +7373,7 @@ input[type=range]:focus::-ms-fill-upper {
   right: 0;
   height: 120vh;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 997;
+  z-index: 993;
   will-change: opacity;
 }
 
