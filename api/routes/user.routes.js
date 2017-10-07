@@ -18,6 +18,10 @@ router.get('/login', (req, res) => {
     res.render('login');
 });
 
+router.get('/signup', (req, res) => {
+    res.render('registro');
+});
+
 router.post('/signup', userController.signUp);
 
 router.post('/authenticate', userController.authenticate);
