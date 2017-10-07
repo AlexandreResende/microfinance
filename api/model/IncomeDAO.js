@@ -9,8 +9,8 @@ function IncomeDAO(connection){
 IncomeDAO.prototype.getAllIncomes = function(req, res){
 
     let userId = {
-                  ownerId: ObjectId('597fccdb5623c9b346c275fd')//req.session.userId
-                 };
+        ownerId: ObjectId('597fccdb5623c9b346c275fd')//req.session.userId
+    };
 
     let incomesColl = this._connection.collection('incomes');
 
@@ -90,9 +90,9 @@ IncomeDAO.prototype.getIncomesCurrentMonth = function(req, res){
     const year = date.getFullYear();
 
     let searchObj = {
-                     month: month,
-                     year: year
-                    };
+        month: month,
+        year: year
+    };
 
     let incomesColl = this._connection.collection('incomes');
 

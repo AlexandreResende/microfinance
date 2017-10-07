@@ -4,10 +4,10 @@ const UserDAO = require('../model/UserDAO');
 module.exports.signUp = (req, res) => {
 
     let userInfo = {
-                    username: req.body.username,
-                    password: req.body.password,
-                    email: req.body.email,
-                   };
+        username: req.body.username,
+        password: req.body.password,
+        email: req.body.email,
+    };
     let errors;
     let user;
 
@@ -22,11 +22,11 @@ module.exports.signUp = (req, res) => {
     if (errors){
         //for to iterate through the errors
         return res.render('index', {
-                                    validation: errors, 
-                                    ok: "", 
-                                    error: "", 
-                                    userInfo: "",
-                                   });
+            validation: errors, 
+            ok: "", 
+            error: "", 
+            userInfo: "",
+        });
     }
 
     //calling the model
@@ -38,9 +38,9 @@ module.exports.signUp = (req, res) => {
 module.exports.authenticate = (req, res) => {
 
     let userInfo = {
-                    email: req.body.username,
-                    password: req.body.password
-                   };
+        email: req.body.username,
+        password: req.body.password
+    };
     let user;
     let errors;
 
@@ -54,11 +54,11 @@ module.exports.authenticate = (req, res) => {
     if (errors){
 
         return res.render('index', {
-                                    validation: errors,
-                                    ok: "",
-                                    error: "",
-                                    userInfo: ""
-                                   });
+            validation: errors,
+            ok: "",
+            error: "",
+            userInfo: ""
+        });
 
     }
 

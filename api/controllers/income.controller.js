@@ -16,12 +16,12 @@ module.exports.insertIncomes = (req, res) => {
     console.log(req.session.userId);
 
     let incomeInfo = {
-                      ownerId: ObjectId(req.session.userId),
-                      month: parseInt(req.body.month),
-                      year: parseInt(req.body.year),
-                      value: parseFloat(req.body.value),
-                      description: req.body.description
-                     };
+        ownerId: ObjectId(req.session.userId),
+        month: parseInt(req.body.month),
+        year: parseInt(req.body.year),
+        value: parseFloat(req.body.value),
+        description: req.body.description
+    };
 
 
     let incomeDAO = new IncomeDAO(dbConnection.getDb());
@@ -32,8 +32,8 @@ module.exports.insertIncomes = (req, res) => {
 module.exports.updateIncomes = (req, res) => {
 
     let incomeId = {
-                    _id: ObjectId('597fee93f7b0ffbbcb03bc0d')//req.params._id
-                   };
+        _id: ObjectId('597fee93f7b0ffbbcb03bc0d')//req.params._id
+    };
     let updateInfo = req.body;
 
     let incomeDAO = new IncomeDAO(dbConnection.getDb());
@@ -44,8 +44,8 @@ module.exports.updateIncomes = (req, res) => {
 module.exports.removeIncomes = (req, res) => {
 
     let incomeId = {
-                      _id: ObjectId('597fee93f7b0ffbbcb03bc0d')//req.params._id
-                     };
+        _id: ObjectId('597fee93f7b0ffbbcb03bc0d')//req.params._id
+    };
 
     let incomeDAO = new IncomeDAO(dbConnection.getDb());
     incomeDAO.removeIncomes(req, res, incomeId);

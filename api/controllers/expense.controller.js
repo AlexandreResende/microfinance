@@ -13,12 +13,12 @@ module.exports.getAllExpenses = (req, res) => {
 module.exports.insertExpenses = (req, res) => {
 
     let expenseInfo = {
-                      ownerId: ObjectId('597feceebf4606bb4b01201b')/*userId._id*/,
-                      month: parseInt(req.body.month),
-                      year: parseInt(req.body.year),
-                      value: - parseFloat(req.body.value),
-                      description: req.body.description
-                     };
+        ownerId: ObjectId('597feceebf4606bb4b01201b')/*userId._id*/,
+        month: parseInt(req.body.month),
+        year: parseInt(req.body.year),
+        value: - parseFloat(req.body.value),
+        description: req.body.description
+    };
 
 
     let expenseDAO = new ExpenseDAO(dbConnection.getDb());
@@ -29,8 +29,8 @@ module.exports.insertExpenses = (req, res) => {
 module.exports.updateExpenses = (req, res) => {
 
     let expenseId = {
-                    _id: ObjectId('597fee93f7b0ffbbcb03bc0d')//req.params._id
-                   };
+        _id: ObjectId('597fee93f7b0ffbbcb03bc0d')//req.params._id
+    };
     let updateInfo = req.body;
 
     let expenseDAO = new ExpenseDAO(dbConnection.getDb());
@@ -41,8 +41,8 @@ module.exports.updateExpenses = (req, res) => {
 module.exports.removeExpenses = (req, res) => {
 
     let expenseId = {
-                      _id: ObjectId('597fee93f7b0ffbbcb03bc0d')//req.params._id
-                     };
+        _id: ObjectId('597fee93f7b0ffbbcb03bc0d')//req.params._id
+    };
 
     let expenseDAO = new ExpenseDAO(dbConnection.getDb());
     expenseDAO.removeExpenses(req, res, expenseId);
