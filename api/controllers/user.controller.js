@@ -8,61 +8,67 @@ module.exports.signUp = (req, res) => {
         password: req.body.password,
         email: req.body.email,
     };
-    let errors;
     let user;
 
-    req.assert('username','Username can not be empty.').notEmpty();
-    req.assert('password', 'Password can not be empty.').notEmpty();
-    req.assert('email', 'E-mail can not be empty.').notEmpty();
+    req.check('username','Username can not be empty.').notEmpty();
+    req.check('password', 'Password can not be empty.').notEmpty();
+    req.check('email', 'E-mail can not be empty.').notEmpty();
+    
+    req
+    .getValidationResult()
+    .then(result => {
 
-    errors = req.validationErrors();
-    //change error handling to new getValidationResult
-    //errors = req.getValidationResult();
+        console.log(result.array());
 
-    if (errors){
-        //for to iterate through the errors
-        return res.render('index', {
-            validation: errors, 
-            ok: "", 
-            error: "", 
-            userInfo: "",
-        });
-    }
+        if (!result.isEmpty()) {
+            return res.render('error', {
+                validation: `${result.array()}`, 
+                ok: ``, 
+                error: `${result.array()}`, 
+                userInfo: ``,
+            });
+        }
 
-    //calling the model
-    user = new UserDAO(dbConnection.getDb());
-    user.signUp(req, res, userInfo);
+        //calling the model
+        user = new UserDAO(dbConnection.getDb());
+        user.signUp(req, res, userInfo);
+
+    });  
 
 }
 
-module.exports.authenticate = (req, res) => {
+module.exports.login = (req, res) => {
 
     let userInfo = {
         email: req.body.username,
         password: req.body.password
     };
     let user;
-    let errors;
 
-    req.assert('username', 'Username can not be empty.');
-    req.assert('password', 'Password can not be empty.');
+    console.log(userInfo);
 
-    //errors = req.ValidationErrors();
-    //change error handling to new getValidationResult
-    //errors = req.getValidationResult();
+    req.check('email', 'Username can not be empty.').notEmpty();
+    req.check('password', 'Password can not be empty.').notEmpty();
 
-    if (errors){
+    req
+    .getValidationResult()
+    .then(result => {
 
-        return res.render('index', {
-            validation: errors,
-            ok: "",
-            error: "",
-            userInfo: ""
-        });
+        console.log(result.array());
 
-    }
+        if (!result.isEmpty()) {
+            return res.render('error', {
+                validation: `${result.array()}`, 
+                ok: ``, 
+                error: `${result.array()}`, 
+                userInfo: ``,
+            });
+        }
 
-    user = new UserDAO(dbConnection.getDb());
-    user.authenticate(req, res, userInfo);
+        //calling the model
+        user = new UserDAO(dbConnection.getDb());
+        user.signUp(req, res, userInfo);
+
+    });  
 
 };
