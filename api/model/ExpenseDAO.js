@@ -10,8 +10,8 @@ ExpenseDAO.prototype.getAllExpenses = function(req, res){
 
     let getExpenses;
     let userId = {
-                  ownerId: ObjectId('597fccdb5623c9b346c275fd')//req.session.userId
-                 };
+        ownerId: ObjectId('597fccdb5623c9b346c275fd')//req.session.userId
+    };
 
     let expensesColl = this._connection.collection('expenses');
 
