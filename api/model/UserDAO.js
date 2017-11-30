@@ -96,6 +96,7 @@ UserDAO.prototype.authenticate = function(req, res, userInfo){
 
     let isUserRegistered;
     let userSearch = this._connection.collection('user');
+    console.log(JSON.stringify(userInfo));
 
     isUserRegistered = new Promise((resolve, reject) => {
 

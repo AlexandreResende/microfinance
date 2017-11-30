@@ -40,12 +40,10 @@ module.exports.signUp = (req, res) => {
 module.exports.login = (req, res) => {
 
     let userInfo = {
-        email: req.body.username,
+        email: req.body.email,
         password: req.body.password
     };
     let user;
-
-    console.log(userInfo);
 
     req.check('email', 'Username can not be empty.').notEmpty();
     req.check('password', 'Password can not be empty.').notEmpty();
@@ -53,8 +51,6 @@ module.exports.login = (req, res) => {
     req
     .getValidationResult()
     .then(result => {
-
-        console.log(result.array());
 
         if (!result.isEmpty()) {
             return res.render('error', {
@@ -67,7 +63,7 @@ module.exports.login = (req, res) => {
 
         //calling the model
         user = new UserDAO(dbConnection.getDb());
-        user.signUp(req, res, userInfo);
+        user.authenticate(req, res, userInfo);
 
     });  
 

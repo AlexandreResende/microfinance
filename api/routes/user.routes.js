@@ -7,11 +7,11 @@ let router = express.Router();
 //for database accessing
 router.get('/', (req, res) => {
     res.render('index', {
-                         validation: "", 
-                         ok: "", 
-                         error: "", 
-                         userInfo: ""
-                        });
+        validation: "", 
+        ok: "", 
+        error: "", 
+        userInfo: ""
+    });
 });
 
 router.get('/login', (req, res) => {
