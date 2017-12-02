@@ -19,20 +19,20 @@ app.set('views', './api/views');
 
 //configuring the middlewares into the app
 app
-.use(helmet())
-.use(bodyParser.urlencoded({ extended: true}))
-.use(bodyParser.json())
-.use(express.static('./api/public'))
-.use(expressValidator())
-.use(expressSession({
+  .use(helmet())
+  .use(bodyParser.urlencoded({ extended: true}))
+  .use(bodyParser.json())
+  .use(express.static('./api/public'))
+  .use(expressValidator())
+  .use(expressSession({
     secret: 'aiushriauhf', 
     resave: false,
     saveUninitialized: false
     }))
-.use(userRoutes)
-.use(incomeRoutes)
-.use(expenseRoutes)
-.use(homeRoutes);
+  .use(userRoutes)
+  .use(incomeRoutes)
+  .use(expenseRoutes)
+  .use(homeRoutes);
 
 
 
