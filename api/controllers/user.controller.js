@@ -61,3 +61,24 @@ module.exports.login = (req, res) => {
 
   });  
 };
+<<<<<<< HEAD
+=======
+
+/**
+ * test code for logout
+ */
+module.exports.logout = (req, res) => {
+
+  console.log("logging the user off and redirecting to the index");
+  //console.log(req.session.userId);  // verify login id
+  req.session.authenticated = false;
+  req.session.userId = "";
+  res.render('index', {
+    validation: "", 
+    ok: "", 
+    error: "", 
+    userInfo: ""
+    
+  }); // redirect for index
+};
+>>>>>>> logout
