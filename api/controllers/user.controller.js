@@ -61,8 +61,6 @@ module.exports.login = (req, res) => {
 
   });  
 };
-<<<<<<< HEAD
-=======
 
 /**
  * test code for logout
@@ -81,4 +79,3 @@ module.exports.logout = (req, res) => {
     
   }); // redirect for index
 };
->>>>>>> logout

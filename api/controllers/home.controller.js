@@ -14,5 +14,5 @@ module.exports.home = (req, res) => {
       userInfo: ``
     });
   }
-  return res.status(200).render('home');
+  return res.status(200).render('dashboard');
 };
