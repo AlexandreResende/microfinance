@@ -33,7 +33,10 @@
 				<ul class="collapsible" data-collapsible="accordion">
 					<li>
 						<div class="collapsible-header white-text"><i class="material-icons right">arrow_drop_down</i>Informações do usuário</div>
-						<div class="collapsible-body blue-grey darken-2 white-text">Nome do usuário</div>
+						<div class="collapsible-body blue-grey darken-2 white-text">
+							Nome do usuário <br>
+							E-mail do usuário
+						</div>
 					</li>
 				</ul>
 			</div>
@@ -75,6 +78,139 @@
 							</div>
 						</div>
 					</div>
+				</div>
+			</div>
+		</div>
+		<div class="fixed-action-btn">
+			<a class="btn-floating btn-large light-blue darken-3">
+				<i class="large material-icons">add</i>
+			</a>
+			<ul>
+				<li><a href="#modalNovaReceita" class="btn-floating green accent-3"><i class="material-icons">local_atm</i></a></li>
+				<li><a href="#modalNovaDespesa" class="btn-floating red accent-3"><i class="material-icons">money_off</i></a></li>
+			</ul>
+		</div>
+	</div>
+
+	<!-- Modal Nova Despesa -->
+	<div id="modalNovaDespesa" class="modal">
+		<div class="modal-content">
+			<div class="section center">
+				<h5>Nova Despesa</h5>
+			</div>
+			<div class="divider"></div>
+			<div class="container center-align">
+				<form class="col s12">
+					<div class="row">
+						<div class="input-field col s12">
+							<select class="browser-default">
+								<!--ainda implementando javascript para preencher
+								<option value="" disabled selected>Selecione o Mês</option>-->
+								<option value="1">Janeiro</option>
+								<option value="2">Fevereiro</option>
+								<option value="3">Março</option>
+								<option value="4">Abril</option>
+								<option value="5">Maio</option>
+								<option value="6">Junho</option>
+								<option value="7">Julho</option>
+								<option value="8">Agosto</option>
+								<option value="9">Setembro</option>
+								<option value="10">Outubro</option>
+								<option value="11">Novembro</option>
+								<option value="12">Dezembro</option>
+							</select>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s12">
+								<select class="browser-default" id="comboAnosDespesa">
+							</select>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s12">
+							<input id="description" type="text" class="validate">
+							<label>Descrição</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s12">
+							<input id="value" type="number" class="validate" step="any">
+							<label>Valor (R$)</label>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="divider"></div>
+		<div class="row center">
+			<div class="section">
+				<div class="col s12 l6">
+					<a href="#!" class="modal-action modal-close waves-effect waves-blue btn-flat"><i class="material-icons left">cancel</i>cancelar</a>
+				</div>
+				<div class="col s12 l6">
+					<button class="modal-action modal-close waves-effect waves-blue btn-flat" type="submit" name="action"><i class="material-icons left">check</i>salvar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- Modal Nova Receita -->
+	<div id="modalNovaReceita" class="modal">
+		<div class="modal-content">
+			<div class="section center">
+				<h5>Nova Receita</h5>
+			</div>
+			<div class="divider"></div>
+			<div class="container center-align">
+				<form class="col s12 center-align">
+					<div class="row center-align">
+						<div class="input-field col s12">
+							<select class="browser-default">
+								<!--ainda implementando javascript para preencher
+								<option value="" disabled selected>Selecione o Mês</option>-->
+								<option value="1">Janeiro</option>
+								<option value="2">Fevereiro</option>
+								<option value="3">Março</option>
+								<option value="4">Abril</option>
+								<option value="5">Maio</option>
+								<option value="6">Junho</option>
+								<option value="7">Julho</option>
+								<option value="8">Agosto</option>
+								<option value="9">Setembro</option>
+								<option value="10">Outubro</option>
+								<option value="11">Novembro</option>
+								<option value="12">Dezembro</option>
+							</select>
+						</div>
+						<div class="input-field col s12">
+								<select class="browser-default" id="comboAnosReceita">
+							</select>
+						</div>
+					</div>
+					<div class="row center">
+						<div class="input-field col s12">
+							<input id="description" type="text" class="validate">
+							<label>Descrição</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s12">
+							<input id="value" type="number" class="validate" step="any">
+							<label>Valor (R$)</label>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="divider"></div>
+		<div class="row center">
+			<div class="section">
+				<div class="col s12 l6">
+					<a href="#!" class="modal-action modal-close waves-effect waves-blue btn-flat"><i class="material-icons left">cancel</i>cancelar</a>
+				</div>
+				<div class="col s12 l6">
+					<button class="modal-action modal-close waves-effect waves-blue btn-flat" type="submit" name="action"><i class="material-icons left">check</i>salvar</button>
 				</div>
 			</div>
 		</div>
