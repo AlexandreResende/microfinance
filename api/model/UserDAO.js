@@ -39,6 +39,7 @@ UserDAO.prototype.signUp = function(req, res, userInfo) {
       let username = userInfo.username;
       let id = userInsertResult.ops[0]._id;
       if (err){
+        console.log(err);
         return res.status(500).render('error', {
           validation: ``,
           ok: ``,
@@ -57,6 +58,7 @@ UserDAO.prototype.signUp = function(req, res, userInfo) {
     });
   })
   .catch((err) => {
+    console.log(err);
     return res.status(500).render('error', {
       validation: ``,
       ok: ``,
