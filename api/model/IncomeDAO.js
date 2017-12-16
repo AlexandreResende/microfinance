@@ -56,8 +56,6 @@ IncomeDAO.prototype.insertIncomes = function(req, res, incomeInfo){
 IncomeDAO.prototype.updateIncomes = function(req, res, incomeId, updateInfo){
   let updateIncome;
   let incomesColl = this._connection.collection('incomes');
-  console.log(incomeId);
-  console.log(updateInfo);
 
   updateIncome = new Promise((resolve, reject) => {
     incomesColl.update(incomeId, {$set: updateInfo}, (err, updateResult) => {
