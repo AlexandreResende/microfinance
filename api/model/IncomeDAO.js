@@ -45,10 +45,10 @@ IncomeDAO.prototype.insertIncomes = function(req, res, incomeInfo){
 
   insertIncome
   .then((insertResult) => {
-    return res.status(201).render('home', {msg: `Income inserted`, result: insertResult.ops[0]});
+    return res.status(201).render('dashboard', {msg: `Income inserted`, result: insertResult.ops[0]});
   })
   .catch((err) => {
-    return es.status(500).render('home', {error: `An error occurred. ${err}`});
+    return es.status(500).render('dashboard', {error: `An error occurred. ${err}`});
   });
 
 }

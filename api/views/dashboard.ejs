@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<!-- META-DATA -->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" type="text/css" href="css/materialize.css" media="screen,projection">
+	<link rel="stylesheet" type="text/css" href="css/style.css" media="screen,projection">
+
+    <!-- ICON PAGE -->
+    <link rel="icon" href="images/ic_launcher_micro_finance.png" sizes="32x32">
+
+	<title>Dashboard</title>
+</head>
+<body onload="preencheAno()">
+
+	<!-- NAVBAR -->
+	<nav class="blue-special">
+		<div class="container">
+			<a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only"><i class="material-icons">menu</i></a>
+			<div class="nav-wrapper white-text center-align"><a class="page-title brand-logo">Microfinance</a></div>
+		</div>
+	</nav>
+	<ul id="nav-mobile" class="side-nav fixed blue-grey darken-4">
+		<div class="section">
+			<li class="center">
+				<img src="images/people_orig.png" alt="imagem do usuário" class="circle responsive-img" id="imagem-dash">
+			</li>
+			<div class="center">
+				<ul class="collapsible" data-collapsible="accordion">
+					<li>
+						<div class="collapsible-header white-text"><i class="material-icons right">arrow_drop_down</i>Informações do usuário</div>
+						<div class="collapsible-body blue-grey darken-2 white-text">
+							Usuário: <%= msg %> <br>
+							E-mail:
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<li class="blue-grey-text lighten-3-text center-align">MENU</li>
+		<li class="active"><a href="#" class="waves-effect waves-blue-custom white-text"><i class="material-icons right blue-text text-darken-2">home</i>Início</a></li>
+		<li><a href="/incomes" class="waves-effect waves-blue-custom white-text"><i class="material-icons right blue-text text-darken-2">local_atm</i>Minhas Receitas</a></li>
+		<li><a href="/expenses" class="waves-effect waves-blue-custom white-text"><i class="material-icons right blue-text text-darken-2">money_off</i>Minhas Despesas</a></li>
+		<li><a href="#" class="waves-effect waves-blue-custom white-text"><i class="material-icons right blue-text text-darken-2">payment</i>Simulação de prividência</a></li>
+		<li class="blue-grey-text lighten-3-text center-align">OUTRAS OPÇÕES</li>
+		<li><a href="/logout" class="waves-effect waves-blue-custom white-text"><i class="material-icons right blue-text text-darken-2">exit_to_app</i>Logout</a></li>
+	</ul>
+
+	<!-- PAGE LAYOUT -->
+	<div class="row">
+		<div class="col s12 l3"></div>
+		<!-- CARDS FROM INCOMES AND EXPENSES TO MONTH CURRENT -->
+		<div class="row">
+			<div class="col s12 l9">
+				<p><i class="material-icons blue-text text-darken-2">chat_bubble_outline</i>&nbsp;&nbsp;&nbsp;Painel com todas as Receitas e Despesas do mês atual.</p>
+				<div class="section">
+					<div class="col s12 l6">
+						<div class="card">
+							<span class="card-title green-text accent-3-text">&nbsp;&nbsp;&nbsp;&nbsp;Receitas</span>
+							<div class="card">
+								<div class="card-content">
+									Card Title<i class="material-icons right">more_vert</i>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col s12 l6">
+						<div class="card">
+							<span class="card-title red-text accent-3-text">&nbsp;&nbsp;&nbsp;&nbsp;Despesas</span>
+							<div class="card">
+								<div class="card-content">
+									Card Title<i class="material-icons right">more_vert</i>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="fixed-action-btn">
+			<a class="btn-floating btn-large light-blue darken-3">
+				<i class="large material-icons">add</i>
+			</a>
+			<ul>
+				<li><a href="#modalNovaReceita" class="btn-floating green accent-3 tooltipped" data-position="left" data-delay="50" data-tooltip="Nova Receita"><i class="material-icons">local_atm</i></a></li>
+				<li><a href="#modalNovaDespesa" class="btn-floating red accent-3 tooltipped" data-position="left" data-delay="50" data-tooltip="Nova Despesa"><i class="material-icons">money_off</i></a></li>
+			</ul>
+		</div>
+	</div>
+
+	<!-- Modal Nova Despesa -->
+	<div id="modalNovaDespesa" class="modal">
+		<div class="modal-content">
+			<div class="section center">
+				<h5>Nova Despesa</h5>
+			</div>
+			<div class="divider"></div>
+			<div class="container center-align">
+				<form class="col s12">
+					<div class="row">
+						<div class="input-field col s12">
+							<select class="browser-default">
+								<!--ainda implementando javascript para preencher
+								<option value="" disabled selected>Selecione o Mês</option>-->
+								<option value="1">Janeiro</option>
+								<option value="2">Fevereiro</option>
+								<option value="3">Março</option>
+								<option value="4">Abril</option>
+								<option value="5">Maio</option>
+								<option value="6">Junho</option>
+								<option value="7">Julho</option>
+								<option value="8">Agosto</option>
+								<option value="9">Setembro</option>
+								<option value="10">Outubro</option>
+								<option value="11">Novembro</option>
+								<option value="12">Dezembro</option>
+							</select>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s12">
+								<select class="browser-default" id="comboAnosDespesa">
+							</select>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s12">
+							<input id="description" type="text" class="validate">
+							<label>Descrição</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s12">
+							<input id="value" type="number" class="validate" step="any">
+							<label>Valor (R$)</label>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="divider"></div>
+		<div class="row center">
+			<div class="section">
+				<div class="col s12 l6">
+					<a href="#!" class="modal-action modal-close waves-effect waves-blue btn-flat"><i class="material-icons left">cancel</i>cancelar</a>
+				</div>
+				<div class="col s12 l6">
+					<button class="modal-action modal-close waves-effect waves-blue btn-flat" type="submit" name="action"><i class="material-icons left">check</i>salvar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- Modal Nova Receita -->
+	<div id="modalNovaReceita" class="modal">
+		<div class="modal-content">
+			<div class="section center">
+				<h5>Nova Receita</h5>
+			</div>
+			<div class="divider"></div>
+			<div class="container center-align">
+				<form class="col s12 center-align">
+					<div class="row center-align">
+						<div class="input-field col s12">
+							<select class="browser-default">
+								<!--ainda implementando javascript para preencher
+								<option value="" disabled selected>Selecione o Mês</option>-->
+								<option value="1">Janeiro</option>
+								<option value="2">Fevereiro</option>
+								<option value="3">Março</option>
+								<option value="4">Abril</option>
+								<option value="5">Maio</option>
+								<option value="6">Junho</option>
+								<option value="7">Julho</option>
+								<option value="8">Agosto</option>
+								<option value="9">Setembro</option>
+								<option value="10">Outubro</option>
+								<option value="11">Novembro</option>
+								<option value="12">Dezembro</option>
+							</select>
+						</div>
+						<div class="input-field col s12">
+								<select class="browser-default" id="comboAnosReceita">
+							</select>
+						</div>
+					</div>
+					<div class="row center">
+						<div class="input-field col s12">
+							<input id="description" type="text" class="validate">
+							<label>Descrição</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s12">
+							<input id="value" type="number" class="validate" step="any">
+							<label>Valor (R$)</label>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="divider"></div>
+		<div class="row center">
+			<div class="section">
+				<div class="col s12 l6">
+					<a href="#!" class="modal-action modal-close waves-effect waves-blue btn-flat"><i class="material-icons left">cancel</i>cancelar</a>
+				</div>
+				<div class="col s12 l6">
+					<button class="modal-action modal-close waves-effect waves-blue btn-flat" type="submit" name="action"><i class="material-icons left">check</i>salvar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+    <!--  Scripts-->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="js/materialize.js"></script>
+    <script src="js/init.js"></script>
+    <script src="js/modal.js"></script>
+  	<script type="text/javascript" src="js/preencher.js"></script>
+</body>
+</html>

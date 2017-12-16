@@ -89,7 +89,9 @@ UserDAO.prototype.authenticate = function(req, res, userInfo){
     req.session.userId = user._id; 
 
     //redirect to the logged page - still dont have it
-    return res.status(200).render('home');
+    return res.status(200).render('dashboard',{
+      msg:'teste json'
+    });
 
   })
   .catch((err) => {

@@ -5525,6 +5525,10 @@ button.btn-floating {
   background-color: rgba(2, 126, 214, 0.7);
 }
 
+.waves-effect.waves-blue-custom .waves-ripple {
+  background-color: rgba(2, 125, 204, 0.7);
+}
+
 .waves-effect input[type="button"], .waves-effect input[type="reset"], .waves-effect input[type="submit"] {
   border: 0;
   font-style: normal;
@@ -9166,4 +9170,8 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
   stroke-width: 4;
   stroke-linecap: round;
   /*shape-rendering: crispEdges;*/
+}
+
+#imagem-dash{
+  height: 128px;
 }
