@@ -3,15 +3,15 @@ const router = express.Router();
 
 const incomeController = require('../controllers/income.controller');
 
-router.get('/incomes', incomeController.getAllIncomes);
+router.get('/:userId/incomes', incomeController.getAllIncomes);
 
-router.post('/incomes', incomeController.insertIncomes);
+router.post('/:userId/incomes', incomeController.insertIncomes);
 
-router.delete('/incomes', incomeController.removeIncomes);
+router.put('/:userId/:incomeId', incomeController.updateIncomes);
 
-router.put('/incomes', incomeController.updateIncomes);
+router.delete('/:userId/:incomeId', incomeController.removeIncomes);
 
-router.get('/monthlyIncome', incomeController.getIncomesCurrentMonth);
+router.get('/:userId/monthlyIncome', incomeController.getIncomesCurrentMonth);
 
 
 module.exports = router;
