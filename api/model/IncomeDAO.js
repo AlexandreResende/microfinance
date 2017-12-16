@@ -8,13 +8,13 @@ function IncomeDAO(connection){
 IncomeDAO.prototype.getAllIncomes = function(req, res){
   let findAllIncomes;
   let userId = {
-    ownerId: ObjectId('597fccdb5623c9b346c275fd')//req.session.userId
+    ownerId: ObjectId(req.params.userId)
   };
   let incomesColl = this._connection.collection('incomes');
 
   findAllIncomes = new Promise((resolve, reject) => {
     incomesColl.find(userId).toArray((err, userIncomesResult) => {
-      if (err){
+      if (err) {
         reject(`${err}`);
       }
       resolve(userIncomesResult);
@@ -22,12 +22,12 @@ IncomeDAO.prototype.getAllIncomes = function(req, res){
   });
 
   findAllIncomes
-  .then((incomes) => {
-    return res.status(200).send({msg: `Returned all incomes successfully`, result: incomes});
-  })
-  .catch((err) => {
-    return res.status(500).send({error: `An error occurred. ${err}`});
-  });
+    .then((incomes) => {
+      return res.status(200).send({msg: `Returned all incomes successfully`, result: incomes});
+    })
+    .catch((err) => {
+      return res.status(500).send({error: `An error occurred. ${err}`});
+    });
 }
 
 IncomeDAO.prototype.insertIncomes = function(req, res, incomeInfo){
@@ -44,18 +44,20 @@ IncomeDAO.prototype.insertIncomes = function(req, res, incomeInfo){
   });
 
   insertIncome
-  .then((insertResult) => {
-    return res.status(201).render('dashboard', {msg: `Income inserted`, result: insertResult.ops[0]});
-  })
-  .catch((err) => {
-    return es.status(500).render('dashboard', {error: `An error occurred. ${err}`});
-  });
+    .then((insertResult) => {
+      return res.status(201).render('dashboard', {msg: `Income inserted`, error: ``, result: insertResult.ops[0]});
+    })
+    .catch((err) => {
+      return res.status(500).render('dashboard', {msg: ``, error: `An error occurred. ${err}`});
+    });
 
 }
 
 IncomeDAO.prototype.updateIncomes = function(req, res, incomeId, updateInfo){
   let updateIncome;
   let incomesColl = this._connection.collection('incomes');
+  console.log(incomeId);
+  console.log(updateInfo);
 
   updateIncome = new Promise((resolve, reject) => {
     incomesColl.update(incomeId, {$set: updateInfo}, (err, updateResult) => {
@@ -67,12 +69,12 @@ IncomeDAO.prototype.updateIncomes = function(req, res, incomeId, updateInfo){
   });
 
   updateIncome
-  .then((updateResult) => {
-    return res.status(200).send({msg: `Income updated`, result: updateResult});
-  })
-  .catch((err) => {
-    return res.status(500).send({error: `An error occurred. ${err}`});
-  });
+    .then((updateResult) => {
+      return res.status(200).send({msg: `Income updated`, result: updateResult});
+    })
+    .catch((err) => {
+      return res.status(500).send({error: `An error occurred. ${err}`});
+    });
 }
 
 IncomeDAO.prototype.removeIncomes = function(req, res, incomeId){
@@ -89,12 +91,12 @@ IncomeDAO.prototype.removeIncomes = function(req, res, incomeId){
   });
 
   removeIncome
-  .then((removeResult) => {
-    return res.status(200).send({msg: `Income updated`, result: removeResult});
-  })
-  .catch((err) => {
-    return res.status(500).send({error: `An error occurred. ${err}`});
-  });
+    .then((removeResult) => {
+      return res.status(200).send({msg: `Income updated`, result: removeResult});
+    })
+    .catch((err) => {
+      return res.status(500).send({error: `An error occurred. ${err}`});
+    });
 }
 
 IncomeDAO.prototype.getIncomesCurrentMonth = function(req, res){
@@ -118,12 +120,12 @@ IncomeDAO.prototype.getIncomesCurrentMonth = function(req, res){
   });
 
   getIncomes
-  .then((getIncomesResult) => {
-    return res.status(200).send({result: findResult});
-  })
-  .catch((err) => {
-    return res.status(500).send({error: `An error occurred. ${err}`});
-  });
+    .then((getIncomesResult) => {
+      return res.status(200).send({result: findResult});
+    })
+    .catch((err) => {
+      return res.status(500).send({error: `An error occurred. ${err}`});
+    });
 
 }
 
