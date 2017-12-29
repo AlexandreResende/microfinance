@@ -20,6 +20,7 @@ module.exports.insertIncomes = (req, res) => {
 
   let incomeDAO = new IncomeDAO(dbConnection.getDb());
   incomeDAO.insertIncomes(req, res, incomeInfo);
+  return res.status(500).render('dashboard', {msg: ``, error: `An error occurred. ${err}`});
 };
 
 module.exports.updateIncomes = (req, res) => {
