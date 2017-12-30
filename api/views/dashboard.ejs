@@ -9,6 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="stylesheet" type="text/css" href="css/materialize.css" media="screen,projection">
 	<link rel="stylesheet" type="text/css" href="css/style.css" media="screen,projection">
+	<link rel="stylesheet" type="text/css" href="css/transitions.css">
 
     <!-- ICON PAGE -->
     <link rel="icon" href="images/ic_launcher_micro_finance.png" sizes="32x32">
@@ -100,10 +101,10 @@
 			</div>
 			<div class="divider"></div>
 			<div class="container center-align">
-				<form class="col s12">
+				<form class="col s12" method="POST" action="/expenses" id="formExpenses" name="formExpenses">
 					<div class="row">
 						<div class="input-field col s12">
-							<select class="browser-default">
+							<select class="browser-default" name="month">
 								<!--ainda implementando javascript para preencher
 								<option value="" disabled selected>Selecione o Mês</option>-->
 								<option value="1">Janeiro</option>
@@ -123,7 +124,7 @@
 					</div>
 					<div class="row">
 						<div class="input-field col s12">
-								<select class="browser-default" id="comboAnosDespesa">
+								<select class="browser-default" id="comboAnosDespesa" name="year">
 							</select>
 						</div>
 					</div>
@@ -149,7 +150,7 @@
 					<a href="#!" class="modal-action modal-close waves-effect waves-blue btn-flat"><i class="material-icons left">cancel</i>cancelar</a>
 				</div>
 				<div class="col s12 l6">
-					<button class="modal-action modal-close waves-effect waves-blue btn-flat" type="submit" name="action"><i class="material-icons left">check</i>salvar</button>
+					<button class="modal-action modal-close waves-effect waves-blue btn-flat" type="submit" id="btnExpenses"><i class="material-icons left">check</i>salvar</button>
 				</div>
 			</div>
 		</div>
@@ -163,10 +164,10 @@
 			</div>
 			<div class="divider"></div>
 			<div class="container center-align">
-				<form class="col s12 center-align">
+				<form class="col s12 center-align" method="POST" id="formIncomes">
 					<div class="row center-align">
 						<div class="input-field col s12">
-							<select class="browser-default">
+							<select class="browser-default" name="month">
 								<!--ainda implementando javascript para preencher
 								<option value="" disabled selected>Selecione o Mês</option>-->
 								<option value="1">Janeiro</option>
@@ -184,19 +185,19 @@
 							</select>
 						</div>
 						<div class="input-field col s12">
-								<select class="browser-default" id="comboAnosReceita">
+								<select class="browser-default" id="comboAnosReceita" name="year">
 							</select>
 						</div>
 					</div>
 					<div class="row center">
 						<div class="input-field col s12">
-							<input id="description" type="text" class="validate">
+							<input id="description" type="text" class="validate" name="description">
 							<label>Descrição</label>
 						</div>
 					</div>
 					<div class="row">
 						<div class="input-field col s12">
-							<input id="value" type="number" class="validate" step="any">
+							<input id="value" type="number" class="validate" step="any" name="value">
 							<label>Valor (R$)</label>
 						</div>
 					</div>
@@ -210,7 +211,7 @@
 					<a href="#!" class="modal-action modal-close waves-effect waves-blue btn-flat"><i class="material-icons left">cancel</i>cancelar</a>
 				</div>
 				<div class="col s12 l6">
-					<button class="modal-action modal-close waves-effect waves-blue btn-flat" type="submit" name="action"><i class="material-icons left">check</i>salvar</button>
+					<button class="modal-action modal-close waves-effect waves-blue btn-flat" type="submit" name="action" id="btnIncomes"><i class="material-icons left">check</i>salvar</button>
 				</div>
 			</div>
 		</div>
@@ -221,6 +222,7 @@
     <script src="js/materialize.js"></script>
     <script src="js/init.js"></script>
     <script src="js/modal.js"></script>
-  	<script type="text/javascript" src="js/preencher.js"></script>
+	<script type="text/javascript" src="js/preencher.js"></script>
+	<script src="js/post-incomes.js"></script>
 </body>
 </html>

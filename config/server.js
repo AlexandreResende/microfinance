@@ -20,6 +20,11 @@ app.set('views', './api/views');
 //configuring the middlewares into the app
 app
   .use(helmet())
+  .use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  })
   .use(bodyParser.urlencoded({ extended: true}))
   .use(bodyParser.json())
   .use(express.static('./api/public'))
