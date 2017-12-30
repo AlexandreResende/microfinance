@@ -1,9 +1,11 @@
 $(document).ready(function(){
-    $("#btnIncomes").click(function(){
+    $("#btnIncomes").on('click', function(){
+        console.log('AKI');
+        console.log(JSON.stringify($("#formIncomes")));
         $.ajax({
             type: "POST",
-            dataType: "json",
-            url: 'http://localhost:10010/5a4682393ecbe0ae47c6997/incomes',
+            dataType: "application/json",
+            url: 'http://localhost:10010/5a350ddef0439d0684137eaa/incomes',
             data: $("#formIncomes").serialize(),
         })
         .done(function(data) {

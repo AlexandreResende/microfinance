@@ -43,14 +43,14 @@ IncomeDAO.prototype.insertIncomes = function(req, res, incomeInfo){
     }); 
   });
 
-  insertIncome
+  Promise
+    .all([insertIncome])
     .then((insertResult) => {
-      return res.status(201).render('dashboard', {msg: `Income inserted`, error: ``, result: insertResult.ops[0]});
+      return res.status(201).render('dashboard', {msg: `Income inserted`, error: ``, result: insertResult[0]});
     })
     .catch((err) => {
       return res.status(500).render('dashboard', {msg: ``, error: `An error occurred. ${err}`});
     });
-
 }
 
 IncomeDAO.prototype.updateIncomes = function(req, res, incomeId, updateInfo){
