@@ -21,7 +21,8 @@ IncomeDAO.prototype.getAllIncomes = function(req, res){
     });
   });
 
-  findAllIncomes
+  Promise
+    .all([findAllIncomes])
     .then((incomes) => {
       return res.status(200).send({msg: `Returned all incomes successfully`, result: incomes});
     })
@@ -66,7 +67,8 @@ IncomeDAO.prototype.updateIncomes = function(req, res, incomeId, updateInfo){
     });
   });
 
-  updateIncome
+  Promise
+    .all([updateIncome])
     .then((updateResult) => {
       return res.status(200).send({msg: `Income updated`, result: updateResult});
     })
@@ -88,7 +90,8 @@ IncomeDAO.prototype.removeIncomes = function(req, res, incomeId){
     });
   });
 
-  removeIncome
+  Promise
+    .all([removeIncome])
     .then((removeResult) => {
       return res.status(200).send({msg: `Income updated`, result: removeResult});
     })
@@ -117,7 +120,8 @@ IncomeDAO.prototype.getIncomesCurrentMonth = function(req, res){
     });
   });
 
-  getIncomes
+  Promise
+    .all([getIncomes])
     .then((getIncomesResult) => {
       return res.status(200).send({result: findResult});
     })

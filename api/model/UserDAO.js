@@ -33,39 +33,39 @@ UserDAO.prototype.signUp = function(req, res, userInfo) {
   });
 
   Promise
-  .all([isUsernameRegistered, isEmailRegistered])
-  .then((values) => {
-    userSearch.insert(userInfo, (err, userInsertResult) => {
-      let username = userInfo.username;
-      let id = userInsertResult.ops[0]._id;
-      if (err){
-        console.log(err);
-        return res.status(500).render('error', {
-          validation: ``,
-          ok: ``,
-          error: err,
-          userInfo: ``
-        });
-      }
+    .all([isUsernameRegistered, isEmailRegistered])
+    .then((values) => {
+      userSearch.insert(userInfo, (err, userInsertResult) => {
+        let username = userInfo.username;
+        let id = userInsertResult.ops[0]._id;
+        if (err){
+          console.log(err);
+          return res.status(500).render('error', {
+            validation: ``,
+            ok: ``,
+            error: err,
+            userInfo: ``
+          });
+        }
 
-      //resource created
-      return res.status(201).render('index', {
+        //resource created
+        return res.status(201).render('index', {
+          validation: ``,
+          ok: `User signed up successfully.`,
+          error: ``, 
+          userInfo: {id: id, username: username}
+        });
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      return res.status(500).render('error', {
         validation: ``,
-        ok: `User signed up successfully.`,
-        error: ``, 
-        userInfo: {id: id, username: username}
+        ok: ``,
+        error: err,
+        userInfo: ``
       });
     });
-  })
-  .catch((err) => {
-    console.log(err);
-    return res.status(500).render('error', {
-      validation: ``,
-      ok: ``,
-      error: err,
-      userInfo: ``
-    });
-  });
 }
 
 UserDAO.prototype.authenticate = function(req, res, userInfo){
@@ -84,27 +84,28 @@ UserDAO.prototype.authenticate = function(req, res, userInfo){
     });
   });
 
-  isUserRegistered
-  .then((user) => {
-    //creating session for a authenticated user
-    req.session.authenticated = true;
-    req.session.userId = user._id; 
+  Promise
+    .all([isUserRegistered])
+    .then((user) => {
+      //creating session for a authenticated user
+      req.session.authenticated = true;
+      req.session.userId = user._id; 
 
-    //redirect to the logged page - still dont have it
-    return res.status(200).render('dashboard',{
-      msg:'teste json' + req.session.userId,
-      usuario: req.session.userId
-    });
+      //redirect to the logged page - still dont have it
+      return res.status(200).render('dashboard',{
+        msg:'teste json' + req.session.userId,
+        usuario: req.session.userId
+      });
 
-  })
-  .catch((err) => {
-    return res.status(404).render('index', {
-      validation: ``,
-      ok: ``,
-      error: `${err}`, 
-      userInfo: ``
+    })
+    .catch((err) => {
+      return res.status(404).render('index', {
+        validation: ``,
+        ok: ``,
+        error: `${err}`, 
+        userInfo: ``
+      });
     });
-  });
 }
 
 module.exports = UserDAO;

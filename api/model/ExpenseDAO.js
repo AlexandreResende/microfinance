@@ -22,13 +22,14 @@ ExpenseDAO.prototype.getAllExpenses = function(req, res){
     });
   });
 
-  getExpenses
-  .then((userExpensesResult) => {
-    res.status(200).send({msg: `Returned all Expenses successfully`, result: userExpensesResult});
-  })
-  .catch((err) => {
-    res.status(500).send({error: `An error occurred.`});
-  });
+  Promise
+    .all([getExpenses])
+    .then((userExpensesResult) => {
+      res.status(200).send({msg: `Returned all Expenses successfully`, result: userExpensesResult});
+    })
+    .catch((err) => {
+      res.status(500).send({error: `An error occurred.`});
+    });
 }
 
 ExpenseDAO.prototype.insertExpenses = function(req, res, expenseInfo){
@@ -44,13 +45,14 @@ ExpenseDAO.prototype.insertExpenses = function(req, res, expenseInfo){
     });   
   });
 
-  insertExpenses
-  .then((insertResult) => {
-    return res.status(201).send({msg: `Expense inserted`, result: insertResult});
-  })
-  .catch((err) => {
-    return res.status(500).send({error: `An error occurred. ${err}`});
-  });
+  Promise
+    .all([insertExpenses])
+    .then((insertResult) => {
+      return res.status(201).send({msg: `Expense inserted`, result: insertResult});
+    })
+    .catch((err) => {
+      return res.status(500).send({error: `An error occurred. ${err}`});
+    });
 }
 
 ExpenseDAO.prototype.updateExpenses = function(req, res, ExpenseId, updateInfo){
@@ -66,14 +68,14 @@ ExpenseDAO.prototype.updateExpenses = function(req, res, ExpenseId, updateInfo){
     });
   });
 
-  updateExpenses
-  .then((updateResult) => {
-    return res.status(200).send({msg: `Expense updated`, result: updateResult});
-  })
-  .catch((err) => {
-    return res.status(500).send({error: `An error occurred. ${err}`});
-  });
-
+  Promise
+    .all([updateExpenses])
+    .then((updateResult) => {
+      return res.status(200).send({msg: `Expense updated`, result: updateResult});
+    })
+    .catch((err) => {
+      return res.status(500).send({error: `An error occurred. ${err}`});
+    });
 }
 
 ExpenseDAO.prototype.removeExpenses = function(req, res, ExpenseId){
@@ -90,13 +92,14 @@ ExpenseDAO.prototype.removeExpenses = function(req, res, ExpenseId){
     });
   });
 
-  removeExpenses
-  .then((removeResult) => {
-    return res.status(200).send({msg: `Expense removed`, result: removeResult});
-  })
-  .catch((err) => {
-    return res.status(500).send({error: `An error occurred. ${err}`});
-  });
+  Promise
+    .all([removeExpenses])
+    .then((removeResult) => {
+      return res.status(200).send({msg: `Expense removed`, result: removeResult});
+    })
+    .catch((err) => {
+      return res.status(500).send({error: `An error occurred. ${err}`});
+    });
 }
 
 module.exports = ExpenseDAO;
